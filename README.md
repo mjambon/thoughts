@@ -8,7 +8,7 @@ collection of articles that fall into one of these four kinds:
   specializations of otherwise ordinary English terms.
   Definitions are made as unambiguous as possible and
   organized so as to avoid cyclic definitions. A definition may only
-  refer to previous definitions and no other kind of article. Priority
+  depend to previous definitions and no other kind of article. Priority
   is given to correctness over an ease of understanding. Minimal examples
   are provided with this goal in mind.
 * Tutorials: a tutorial is a progressive introduction to a topic. It
@@ -16,5 +16,4 @@ collection of articles that fall into one of these four kinds:
 * Case studies: a case study looks into a particular problem and
   solves it using the concepts introduced in this book.
 * Discussions: a discussion looks into choices made in this book,
-  compares it to some other approaches, and attempts to justify the
-  choices made in the book.
+  compares it to some other approaches, and attempts to justify them.

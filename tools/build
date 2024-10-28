@@ -1,0 +1,176 @@
+#!/usr/bin/env python3
+#
+# Convert the book into a website
+#
+
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+import argparse
+import re
+import os
+
+#############################################################################
+# Book format
+#############################################################################
+#
+# Basics:
+# - the book is a collection of articles grouped into chapters.
+# - any file ending in '.md' in the file tree is considered a source file.
+# - the format is not Markdown directly. Each source file needs to be
+#   preprocessed to be converted into one or more Markdown files with metadata.
+# - within a chapter, some special structure can be imposed such as checking
+#   that articles are ordered or can be ordered without cycles, don't
+#   contain external links, etc.
+# - Markdown files are the result of this build. They are rendered into HTML
+#   using an external tool that does this well, Pandoc.
+#
+# Elements of implementation:
+# - the Article type
+# - the Chapter type
+# - the preprocessor
+#
+# Structure of the source tree:
+# - one folder per chapter
+# - one or several source files per chapter folder
+# - each article is named independently from the name of the source file
+#
+# Source file syntax:
+#
+# 
+#
+#############################################################################
+
+@dataclass
+class Article:
+    # metadata
+    slug: str = ""
+    id_: str = ""
+    title: str = ""
+    # article body
+    markdown_lines: List[str] = field(default_factory=lambda: [])
+    # data extracted from the body
+    dependencies: List[str] = field(default_factory=lambda: [])
+
+
+@dataclass
+class Chapter:
+    slug: str
+    title: str
+    # introduction
+    markdown_introduction: str
+    articles: List[Article]
+
+
+slug_re = re.compile(r"""
+  ^
+  \*\*\*\**     # 3 or more stars
+  \s*           # whitespace
+  ([a-z0-9-]+)  # slug (filename/URL); must contain only URL-safe characters
+  \s*
+  $
+""", re.X)
+
+field_re = re.compile(r"""
+  ^
+  ([a-z_]+)     # key
+  \s*           # whitespace
+  :
+  \s*           # whitespace
+  (.*)          # value
+  \s*
+  $
+""", re.X)
+
+
+def match_slug(line: str) -> Optional[str]:
+    match = slug_re.match(line)
+    if match:
+        return match.group(1)
+    else:
+        return None
+
+
+# Split a source file into articles with metadata
+def split_source_file(filepath: Path) -> List[Article]:
+    articles: List[Article] = []
+    article = Article()
+    lines: List[str] = []
+    def close_article() -> None:
+        nonlocal article, articles, lines
+        article.markdown_lines = lines
+        # TODO: dependencies
+        # article.dependencies = ...
+        if article.slug:
+            articles.append(article)
+        article = Article()
+        lines = []
+    with open(filepath) as file:
+        for line in file:
+            slug = match_slug(line)
+            if slug:
+                close_article()
+                article.slug = slug
+            elif article.slug:
+                lines.append(line)
+            # else discard lines (at the beginning of the file)
+    close_article()
+    return articles
+
+
+def collect_articles_in_folder(folder: Path) -> List[Article]:
+    return [
+        article
+        for name in os.listdir(folder)
+        if os.path.isfile(folder / name)
+        for article in split_source_file(folder / name)
+    ]
+
+
+def collect_articles(source_folder: Path, chapters: List[Chapter]) -> None:
+    for chapter in chapters:
+        chapter.articles = \
+            collect_articles_in_folder(source_folder / chapter.slug)
+
+
+CHAPTERS = [
+    Chapter(
+        slug="definitions",
+        title="Definitions",
+        markdown_introduction="",
+        articles=[]
+    ),
+    Chapter(
+        slug="tutorials",
+        title="Tutorials",
+        markdown_introduction="",
+        articles=[]
+    ),
+    Chapter(
+        slug="case-studies",
+        title="Case Studies",
+        markdown_introduction="",
+        articles=[]
+    ),
+    Chapter(
+        slug="discussions",
+        title="Discussions",
+        markdown_introduction="",
+        articles=[]
+    ),
+]
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description='Generate the HTML book.')
+    parser.add_argument("source_folder",
+                        help="the folder containing the unformatted book")
+    args = parser.parse_args()
+    collect_articles(Path(args.source_folder), CHAPTERS)
+    for chapter in CHAPTERS:
+        print(f"# chapter: {chapter.slug} {chapter.title}")
+        for article in chapter.articles:
+            print(f"## article: {article.slug}")
+
+
+main()
