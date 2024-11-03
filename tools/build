@@ -5,7 +5,7 @@
 
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Set, Tuple
 import argparse
 import re
 import os
@@ -62,7 +62,21 @@ class Chapter:
     articles: List[Article]
 
 
-slug_re = re.compile(r"""
+# Check that the articles are in an order that respects the dependencies
+def check_dependencies(articles: List[Article], allow_cycles: bool = False) -> None:
+    all_ids = { article.id_ for article in articles }
+    previous_ids: Set[str] = set()
+    for article in articles:
+        id_ = article.id_
+        for dep in article.dependencies:
+            if not dep in all_ids:
+                raise Exception(f"article '{id_}' depends on unknown article '{dep}'")
+            if not allow_cycles and not dep in previous_ids:
+                raise Exception(f"article '{id_}' depends on later article '{dep}'")
+        previous_ids.add(id_)
+
+
+SLUG_RE = re.compile(r"""
   ^
   \*\*\*\**     # 3 or more stars
   \s*           # whitespace
@@ -71,7 +85,7 @@ slug_re = re.compile(r"""
   $
 """, re.X)
 
-field_re = re.compile(r"""
+FIELD_RE = re.compile(r"""
   ^
   ([a-z_]+)     # key
   \s*           # whitespace
@@ -84,35 +98,153 @@ field_re = re.compile(r"""
 
 
 def match_slug(line: str) -> Optional[str]:
-    match = slug_re.match(line)
+    match = SLUG_RE.match(line)
     if match:
         return match.group(1)
     else:
         return None
 
 
+def parse_field(line: str) -> Optional[Tuple[str, str]]:
+    match = FIELD_RE.match(line)
+    if match:
+        return (match.group(1), match.group(2))
+    else:
+        return None
+
+
+SHORT_LINK_RE = re.compile(r"""
+  \[([^\[\]\(\)]+)\]  # bracketed contents
+  (?!\()              # not followed by an opening parenthesis
+""", re.X)
+
+
+LINK_RE = re.compile(r"""
+  \[([^\[\]\(\)]+)\]  # [foo]
+  \(([^\[\]\(\)]+)\)  # (bar)
+""", re.X)
+
+
+# [foo] -> [foo](foo)
+#
+def replace_short_links(line: str) -> str:
+    return re.sub(SHORT_LINK_RE, r"[\1](\1)", line)
+
+# Extract bar from [foo](bar)
+#
+def extract_links(line: str) -> List[str]:
+    return [ x.group(2) for x in re.finditer(LINK_RE, line) ]
+
+
+# Parse the article body and convert it to proper MarkDown.
+# Return (body, dependencies). A dependency is a MarkDown link such as
+# 'bar' in '[foo](bar)' or 'foo' in '[foo]'.
+#
+# Conversions:
+#   [foo](bar) -> [foo](bar)
+#   [foo] -> [foo](foo)
+#
+def parse_article_body(lines: List[str]) -> Tuple[List[str], List[str]]:
+    md_lines: List[str] = []
+    dependencies: List[str] = []
+    for line in lines:
+        md_line = replace_short_links(line)
+        dependencies.extend(extract_links(md_line))
+        md_lines.append(md_line)
+    return (md_lines, dependencies)
+
+
+# Format:
+# - head section containing metadata section followed by document body.
+# - metadata section is made of lines of the form "name: value",
+#   blank lines are skipped until reaching a line that's not of the
+#   "key: value".
+# - the body is anything that follows the metadata section.
+#
+# Sample input:
+#
+#   title: Hello World
+#   Something something
+#   something
+#
+# If in the future we need more metadata or more structured metadata
+# field values, we should switch to a standard data format like JSON or YAML
+# for the head section.
+#
+def parse_article(slug: str, lines: List[str]) -> Article:
+    print(f"parse article: {slug}")
+    stream = iter(lines)
+    title = None
+    id_ = slug
+    body = []
+    # Parse head section
+    try:
+        while True:
+            line = next(stream)
+            print(f"parse line: {line}")
+            field = parse_field(line)
+            if field:
+                key, value = field
+                if key == '':
+                    pass
+                elif key == 'title':
+                    title = value
+                elif key == 'id':
+                    id_ = value
+                else:
+                    raise Exception(f"{slug}: unsupported field: {key}")
+            else:
+                body.append(line)
+                break
+    except StopIteration:
+        pass
+    if not title:
+        raise Exception(f"{slug}: missing title")
+    # Parse body
+    try:
+        while True:
+            body.append(next(stream))
+    except StopIteration:
+        pass
+
+    print(f"article body: {body}")
+    md_body, dependencies = parse_article_body(body)
+    print(f"markdown article body: {md_body}")
+    print(f"dependencies: {dependencies}")
+
+    return Article(slug=slug,
+                   id_=id_,
+                   title=title,
+                   markdown_lines=md_body,
+                   dependencies=dependencies)
+
+
 # Split a source file into articles with metadata
 def split_source_file(filepath: Path) -> List[Article]:
     articles: List[Article] = []
-    article = Article()
-    lines: List[str] = []
+    current_slug: str = ""
+    current_lines: List[str] = []
     def close_article() -> None:
-        nonlocal article, articles, lines
-        article.markdown_lines = lines
-        # TODO: dependencies
-        # article.dependencies = ...
-        if article.slug:
-            articles.append(article)
-        article = Article()
-        lines = []
+        # The current article so far was parsed into a slug (URL path)
+        # and lines of text. They need to be parsed further into a header
+        # and body.
+        nonlocal articles, current_slug, current_lines
+        if current_slug:
+            article = parse_article(current_slug, current_lines)
+            if article.slug:
+                articles.append(article)
+        current_slug = ""
+        current_lines = []
     with open(filepath) as file:
         for line in file:
-            slug = match_slug(line)
-            if slug:
+            opt_slug = match_slug(line)
+            if opt_slug:
+                # We found the beginning of a new article.
+                # Finish with the current article:
                 close_article()
-                article.slug = slug
-            elif article.slug:
-                lines.append(line)
+                current_slug = opt_slug
+            elif current_slug:
+                current_lines.append(line)
             # else discard lines (at the beginning of the file)
     close_article()
     return articles
@@ -133,32 +265,35 @@ def collect_articles(source_folder: Path, chapters: List[Chapter]) -> None:
             collect_articles_in_folder(source_folder / chapter.slug)
 
 
-CHAPTERS = [
-    Chapter(
-        slug="definitions",
-        title="Definitions",
-        markdown_introduction="",
-        articles=[]
-    ),
-    Chapter(
-        slug="tutorials",
-        title="Tutorials",
-        markdown_introduction="",
-        articles=[]
-    ),
-    Chapter(
-        slug="case-studies",
-        title="Case Studies",
-        markdown_introduction="",
-        articles=[]
-    ),
-    Chapter(
-        slug="discussions",
-        title="Discussions",
-        markdown_introduction="",
-        articles=[]
-    ),
-]
+CHAP_DEF = Chapter(
+    slug="definitions",
+    title="Definitions",
+    markdown_introduction="",
+    articles=[]
+)
+
+CHAP_TUT = Chapter(
+    slug="tutorials",
+    title="Tutorials",
+    markdown_introduction="",
+    articles=[]
+)
+
+CHAP_CAS = Chapter(
+    slug="case-studies",
+    title="Case Studies",
+    markdown_introduction="",
+    articles=[]
+)
+
+CHAP_DIS = Chapter(
+    slug="discussions",
+    title="Discussions",
+    markdown_introduction="",
+    articles=[]
+)
+
+CHAPTERS: List[Chapter] = [CHAP_DEF, CHAP_TUT, CHAP_CAS, CHAP_DIS]
 
 
 def main() -> None:
@@ -167,6 +302,19 @@ def main() -> None:
                         help="the folder containing the unformatted book")
     args = parser.parse_args()
     collect_articles(Path(args.source_folder), CHAPTERS)
+
+    # Check for cyclic dependencies in definitions
+    check_dependencies(CHAP_DEF.articles)
+
+    # Check for broken internal links
+    chapter: Chapter
+    all_articles: List[Article] = [
+        article
+        for chapter in CHAPTERS
+        for article in chapter.articles
+    ]
+    check_dependencies(all_articles, allow_cycles=True)
+
     for chapter in CHAPTERS:
         print(f"# chapter: {chapter.slug} {chapter.title}")
         for article in chapter.articles:
