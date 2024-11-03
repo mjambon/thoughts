@@ -269,7 +269,8 @@ def export_to_markdown_page(chapters: List[Chapter]) -> None:
         if chapter.markdown_introduction:
             print(f"{chapter.markdown_introduction}\n")
         for article in chapter.articles:
-            print(f"### {article.title}<a name='{article.id_}'/>\n")
+            print(f"<div><a id='{article.id_}'/></div>\n")
+            print(f"### {article.title}\n")
             print(f"{''.join(article.markdown_lines)}\n")
 
 
