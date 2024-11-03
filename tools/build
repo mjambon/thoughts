@@ -274,35 +274,37 @@ def export_to_markdown_page(chapters: List[Chapter]) -> None:
             print(f"{''.join(article.markdown_lines)}\n")
 
 
-CHAP_DEF = Chapter(
+DEFINITIONS = Chapter(
     id_="definitions",
     title="Definitions",
     markdown_introduction="",
     articles=[]
 )
 
-CHAP_TUT = Chapter(
-    id_="tutorials",
-    title="Tutorials",
+INTRODUCTIONS = Chapter(
+    id_="introductions",
+    title="Introductions",
     markdown_introduction="",
     articles=[]
 )
 
-CHAP_CAS = Chapter(
+CASE_STUDIES = Chapter(
     id_="case-studies",
     title="Case Studies",
     markdown_introduction="",
     articles=[]
 )
 
-CHAP_DIS = Chapter(
-    id_="discussions",
-    title="Discussions",
+EXTENSIONS = Chapter(
+    id_="extensions",
+    title="Extensions",
     markdown_introduction="",
     articles=[]
 )
 
-CHAPTERS: List[Chapter] = [CHAP_DEF, CHAP_TUT, CHAP_CAS, CHAP_DIS]
+CHAPTERS: List[Chapter] = [
+    DEFINITIONS, INTRODUCTIONS, CASE_STUDIES, EXTENSIONS
+]
 
 
 def main() -> None:
@@ -313,7 +315,7 @@ def main() -> None:
     collect_articles(Path(args.source_folder), CHAPTERS)
 
     # Check for cyclic dependencies in definitions
-    check_dependencies(CHAP_DEF.articles)
+    check_dependencies(DEFINITIONS.articles)
 
     # Check for broken internal links
     chapter: Chapter
