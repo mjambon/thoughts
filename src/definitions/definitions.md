@@ -30,6 +30,7 @@ Format:
 
 *** world
 title: World
+synonyms: worlds
 
 A subject of study plus everything that interacts with it
 directly or indirectly. It is normally referred to as "the" world
@@ -42,6 +43,7 @@ other worlds.
 
 *** model
 title: Model
+synonyms: models
 
 An unambiguous representation of the [world]. As such, a model
 can in principle, given sufficient technology, be translated into

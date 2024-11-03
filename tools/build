@@ -43,11 +43,19 @@ import os
 
 @dataclass
 class Article:
-    # metadata
-    id_: str = ""
+    # main unique ID, does not require URL or HTML encoding
+    # format: [a-z]([a-z-]*[a-z])?
+    main_id: str = ""
+
+    # properly capitalized title, should match ID closely
     title: str = ""
+
+    # alternative unique IDs main_id and lowercased title
+    ids: Set[str] = field(default_factory=lambda: set())
+
     # article body
     markdown_lines: List[str] = field(default_factory=lambda: [])
+
     # data extracted from the body
     dependencies: List[str] = field(default_factory=lambda: [])
 
@@ -63,16 +71,25 @@ class Chapter:
 
 # Check that the articles are in an order that respects the dependencies
 def check_dependencies(articles: List[Article], allow_cycles: bool = False) -> None:
-    all_ids = { article.id_ for article in articles }
+    all_ids = { article.main_id for article in articles }
     previous_ids: Set[str] = set()
     for article in articles:
-        id_ = article.id_
+        main_id = article.main_id
+        for id_ in article.ids:
+            if id_ in previous_ids:
+                raise Exception(f"duplicate article ID: '{id_}'")
         for dep in article.dependencies:
             if not dep in all_ids:
-                raise Exception(f"article '{id_}' depends on unknown article '{dep}'")
+                raise Exception(f"article '{main_id}' depends on unknown article '{dep}'")
             if not allow_cycles and not dep in previous_ids:
-                raise Exception(f"article '{id_}' depends on later article '{dep}'")
-        previous_ids.add(id_)
+                raise Exception(f"article '{main_id}' depends on later article '{dep}'")
+        previous_ids.update(article.ids)
+
+
+def make_synonym_map(articles: List[Article]) -> Dict[str, str]:
+    return { id_: article.main_id
+             for article in articles
+             for id_ in article.ids }
 
 
 ID_RE = re.compile(r"""
@@ -129,6 +146,22 @@ LINK_RE = re.compile(r"""
 def replace_short_links(line: str) -> str:
     return re.sub(SHORT_LINK_RE, r"[\1](\1)", line)
 
+
+def resolve_link(synonym_map: Dict[str, str], link: str) -> str:
+    key = link.lower()
+    if key in synonym_map:
+        return synonym_map[key]
+    else:
+        raise Exception("invalid link: '{link}'")
+
+
+def resolve_link_synonyms(synonym_map: Dict[str, str], line: str) -> str:
+    return re.sub(
+        LINK_RE,
+        lambda m: f"[{m.group(1)}]({resolve_link(synonym_map, m.group(2))})",
+        line)
+
+
 # [foo](bar) -> [foo](#bar)
 #
 def make_links_local(line: str) -> str:
@@ -146,16 +179,20 @@ def extract_links(line: str) -> List[str]:
 # 'bar' in '[foo](bar)' or 'foo' in '[foo]'.
 #
 # Conversions:
-#   [foo](bar) -> [foo](bar)
-#   [foo] -> [foo](foo)
+#   [foo](bar) -> [foo](#bar)
+#   [Foo] -> [Foo](#foo)
+#   [foos] -> [foos](#foo)
 #
-def parse_article_body(lines: List[str]) -> Tuple[List[str], List[str]]:
+def parse_article_body(synonym_map: Dict[str, str],
+                       lines: List[str]) -> Tuple[List[str], List[str]]:
     md_lines: List[str] = []
     dependencies: List[str] = []
     for line in lines:
         md_line = replace_short_links(line)
         dependencies.extend(extract_links(md_line))
-        md_lines.append(make_links_local(md_line))
+        md_line = resolve_link_synonyms(synonym_map, md_line)
+        md_line = make_links_local(md_line)
+        md_lines.append(md_line)
     return (md_lines, dependencies)
 
 
@@ -176,9 +213,10 @@ def parse_article_body(lines: List[str]) -> Tuple[List[str], List[str]]:
 # field values, we should switch to a standard data format like JSON or YAML
 # for the head section.
 #
-def parse_article(id_: str, lines: List[str]) -> Article:
+def parse_article(main_id: str, lines: List[str]) -> Article:
     stream = iter(lines)
     title = None
+    ids = set()
     body = []
     # Parse head section
     try:
@@ -192,16 +230,19 @@ def parse_article(id_: str, lines: List[str]) -> Article:
                 elif key == 'title':
                     title = value
                 elif key == 'id':
-                    id_ = value
+                    main_id = value
+                elif key == 'synonyms':
+                    synonyms = [x.strip() for x in value.split(',')]
+                    ids.update(synonyms)
                 else:
-                    raise Exception(f"{id_}: unsupported field: {key}")
+                    raise Exception(f"{main_id}: unsupported field: {key}")
             else:
                 body.append(line)
                 break
     except StopIteration:
         pass
     if not title:
-        raise Exception(f"{id_}: missing title")
+        raise Exception(f"{main_id}: missing title")
     # Parse body
     try:
         while True:
@@ -209,15 +250,33 @@ def parse_article(id_: str, lines: List[str]) -> Article:
     except StopIteration:
         pass
 
-    md_body, dependencies = parse_article_body(body)
-
-    return Article(id_=id_,
+    ids.add(main_id)
+    ids.add(title.lower())
+    return Article(main_id=main_id,
                    title=title,
-                   markdown_lines=md_body,
-                   dependencies=dependencies)
+                   ids=ids,
+                   # body needs further processing
+                   markdown_lines=body)
 
 
-# Split a source file into articles with metadata
+# Check links, fix links, extract dependencies.
+# This modifies the Article object in place.
+#
+# The synonym map is built beforehand from the list of articles and
+# their synonyms.
+#
+def parse_article_phase2(synonym_map: Dict[str, str],
+                         article: Article) -> None:
+    md_body, dependencies = parse_article_body(synonym_map,
+                                               article.markdown_lines)
+    article.markdown_lines = md_body
+    article.dependencies = dependencies
+
+
+# Split a source file into articles with metadata.
+# A second phase of parsing is done after this because it requires knowledge
+# of all the article IDs and their synonyms.
+#
 def split_source_file(filepath: Path) -> List[Article]:
     articles: List[Article] = []
     current_id: str = ""
@@ -229,7 +288,7 @@ def split_source_file(filepath: Path) -> List[Article]:
         nonlocal articles, current_id, current_lines
         if current_id:
             article = parse_article(current_id, current_lines)
-            if article.id_:
+            if article.main_id:
                 articles.append(article)
         current_id = ""
         current_lines = []
@@ -248,6 +307,8 @@ def split_source_file(filepath: Path) -> List[Article]:
     return articles
 
 
+# The second phase of articles parsing needs to come after this
+#
 def collect_articles_in_folder(folder: Path) -> List[Article]:
     return [
         article
@@ -262,6 +323,21 @@ def collect_articles(source_folder: Path, chapters: List[Chapter]) -> None:
         chapter.articles = \
             collect_articles_in_folder(source_folder / chapter.id_)
 
+    # Check for cyclic dependencies in definitions
+    check_dependencies(DEFINITIONS.articles)
+
+    # Check for broken internal links
+    all_articles: List[Article] = [
+        article
+        for chapter in CHAPTERS
+        for article in chapter.articles
+    ]
+    check_dependencies(all_articles, allow_cycles=True)
+
+    synonym_map = make_synonym_map(all_articles)
+    for article in all_articles:
+        parse_article_phase2(synonym_map, article)
+
 
 def export_to_markdown_page(chapters: List[Chapter]) -> None:
     for chapter in chapters:
@@ -269,7 +345,7 @@ def export_to_markdown_page(chapters: List[Chapter]) -> None:
         if chapter.markdown_introduction:
             print(f"{chapter.markdown_introduction}\n")
         for article in chapter.articles:
-            print(f"<div><a id='{article.id_}'/></div>\n")
+            print(f"<div><a id='{article.main_id}'/></div>\n")
             print(f"### {article.title}\n")
             print(f"{''.join(article.markdown_lines)}\n")
 
@@ -313,18 +389,6 @@ def main() -> None:
                         help="the folder containing the unformatted book")
     args = parser.parse_args()
     collect_articles(Path(args.source_folder), CHAPTERS)
-
-    # Check for cyclic dependencies in definitions
-    check_dependencies(DEFINITIONS.articles)
-
-    # Check for broken internal links
-    chapter: Chapter
-    all_articles: List[Article] = [
-        article
-        for chapter in CHAPTERS
-        for article in chapter.articles
-    ]
-    check_dependencies(all_articles, allow_cycles=True)
 
     export_to_markdown_page(CHAPTERS)
 
