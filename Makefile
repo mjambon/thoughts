@@ -3,4 +3,6 @@
 .PHONY: build
 build:
 	$(MAKE) -C tools build
-	./tools/build src
+	mkdir -p _build
+	./tools/build src > _build/index.md
+	pandoc --toc _build/index.md -o docs/index.html

@@ -37,14 +37,13 @@ import os
 #
 # Source file syntax:
 #
-# 
+# ...
 #
 #############################################################################
 
 @dataclass
 class Article:
     # metadata
-    slug: str = ""
     id_: str = ""
     title: str = ""
     # article body
@@ -55,7 +54,7 @@ class Article:
 
 @dataclass
 class Chapter:
-    slug: str
+    id_: str
     title: str
     # introduction
     markdown_introduction: str
@@ -76,11 +75,11 @@ def check_dependencies(articles: List[Article], allow_cycles: bool = False) -> N
         previous_ids.add(id_)
 
 
-SLUG_RE = re.compile(r"""
+ID_RE = re.compile(r"""
   ^
   \*\*\*\**     # 3 or more stars
   \s*           # whitespace
-  ([a-z0-9-]+)  # slug (filename/URL); must contain only URL-safe characters
+  ([a-z0-9-]+)  # ID (filename/URL); must contain only URL-safe characters
   \s*
   $
 """, re.X)
@@ -97,8 +96,8 @@ FIELD_RE = re.compile(r"""
 """, re.X)
 
 
-def match_slug(line: str) -> Optional[str]:
-    match = SLUG_RE.match(line)
+def match_id(line: str) -> Optional[str]:
+    match = ID_RE.match(line)
     if match:
         return match.group(1)
     else:
@@ -130,6 +129,12 @@ LINK_RE = re.compile(r"""
 def replace_short_links(line: str) -> str:
     return re.sub(SHORT_LINK_RE, r"[\1](\1)", line)
 
+# [foo](bar) -> [foo](#bar)
+#
+def make_links_local(line: str) -> str:
+    return re.sub(LINK_RE, r"[\1](#\2)", line)
+
+
 # Extract bar from [foo](bar)
 #
 def extract_links(line: str) -> List[str]:
@@ -150,7 +155,7 @@ def parse_article_body(lines: List[str]) -> Tuple[List[str], List[str]]:
     for line in lines:
         md_line = replace_short_links(line)
         dependencies.extend(extract_links(md_line))
-        md_lines.append(md_line)
+        md_lines.append(make_links_local(md_line))
     return (md_lines, dependencies)
 
 
@@ -171,17 +176,14 @@ def parse_article_body(lines: List[str]) -> Tuple[List[str], List[str]]:
 # field values, we should switch to a standard data format like JSON or YAML
 # for the head section.
 #
-def parse_article(slug: str, lines: List[str]) -> Article:
-    print(f"parse article: {slug}")
+def parse_article(id_: str, lines: List[str]) -> Article:
     stream = iter(lines)
     title = None
-    id_ = slug
     body = []
     # Parse head section
     try:
         while True:
             line = next(stream)
-            print(f"parse line: {line}")
             field = parse_field(line)
             if field:
                 key, value = field
@@ -192,14 +194,14 @@ def parse_article(slug: str, lines: List[str]) -> Article:
                 elif key == 'id':
                     id_ = value
                 else:
-                    raise Exception(f"{slug}: unsupported field: {key}")
+                    raise Exception(f"{id_}: unsupported field: {key}")
             else:
                 body.append(line)
                 break
     except StopIteration:
         pass
     if not title:
-        raise Exception(f"{slug}: missing title")
+        raise Exception(f"{id_}: missing title")
     # Parse body
     try:
         while True:
@@ -207,13 +209,9 @@ def parse_article(slug: str, lines: List[str]) -> Article:
     except StopIteration:
         pass
 
-    print(f"article body: {body}")
     md_body, dependencies = parse_article_body(body)
-    print(f"markdown article body: {md_body}")
-    print(f"dependencies: {dependencies}")
 
-    return Article(slug=slug,
-                   id_=id_,
+    return Article(id_=id_,
                    title=title,
                    markdown_lines=md_body,
                    dependencies=dependencies)
@@ -222,28 +220,28 @@ def parse_article(slug: str, lines: List[str]) -> Article:
 # Split a source file into articles with metadata
 def split_source_file(filepath: Path) -> List[Article]:
     articles: List[Article] = []
-    current_slug: str = ""
+    current_id: str = ""
     current_lines: List[str] = []
     def close_article() -> None:
         # The current article so far was parsed into a slug (URL path)
         # and lines of text. They need to be parsed further into a header
         # and body.
-        nonlocal articles, current_slug, current_lines
-        if current_slug:
-            article = parse_article(current_slug, current_lines)
-            if article.slug:
+        nonlocal articles, current_id, current_lines
+        if current_id:
+            article = parse_article(current_id, current_lines)
+            if article.id_:
                 articles.append(article)
-        current_slug = ""
+        current_id = ""
         current_lines = []
     with open(filepath) as file:
         for line in file:
-            opt_slug = match_slug(line)
-            if opt_slug:
+            opt_id = match_id(line)
+            if opt_id:
                 # We found the beginning of a new article.
                 # Finish with the current article:
                 close_article()
-                current_slug = opt_slug
-            elif current_slug:
+                current_id = opt_id
+            elif current_id:
                 current_lines.append(line)
             # else discard lines (at the beginning of the file)
     close_article()
@@ -262,32 +260,42 @@ def collect_articles_in_folder(folder: Path) -> List[Article]:
 def collect_articles(source_folder: Path, chapters: List[Chapter]) -> None:
     for chapter in chapters:
         chapter.articles = \
-            collect_articles_in_folder(source_folder / chapter.slug)
+            collect_articles_in_folder(source_folder / chapter.id_)
+
+
+def export_to_markdown_page(chapters: List[Chapter]) -> None:
+    for chapter in chapters:
+        print(f"## {chapter.title}\n")
+        if chapter.markdown_introduction:
+            print(f"{chapter.markdown_introduction}\n")
+        for article in chapter.articles:
+            print(f"### {article.title}<a name='{article.id_}'/>\n")
+            print(f"{''.join(article.markdown_lines)}\n")
 
 
 CHAP_DEF = Chapter(
-    slug="definitions",
+    id_="definitions",
     title="Definitions",
     markdown_introduction="",
     articles=[]
 )
 
 CHAP_TUT = Chapter(
-    slug="tutorials",
+    id_="tutorials",
     title="Tutorials",
     markdown_introduction="",
     articles=[]
 )
 
 CHAP_CAS = Chapter(
-    slug="case-studies",
+    id_="case-studies",
     title="Case Studies",
     markdown_introduction="",
     articles=[]
 )
 
 CHAP_DIS = Chapter(
-    slug="discussions",
+    id_="discussions",
     title="Discussions",
     markdown_introduction="",
     articles=[]
@@ -315,10 +323,7 @@ def main() -> None:
     ]
     check_dependencies(all_articles, allow_cycles=True)
 
-    for chapter in CHAPTERS:
-        print(f"# chapter: {chapter.slug} {chapter.title}")
-        for article in chapter.articles:
-            print(f"## article: {article.slug}")
+    export_to_markdown_page(CHAPTERS)
 
 
 main()
