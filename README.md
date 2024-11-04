@@ -1,6 +1,6 @@
 # Thoughts
 
-This a collection of thoughts on various topics. This book is made of a
+This a collection of thoughts on various topics. [This book](https://mjambon.github.io/thoughts/) is made of a
 collection of articles that fall into one of these four kinds:
 
 * Definitions: definitions are given for a collection of the main
@@ -11,9 +11,8 @@ collection of articles that fall into one of these four kinds:
   depend to previous definitions and no other kind of article. Priority
   is given to correctness over an ease of understanding. Minimal examples
   are provided with this goal in mind.
-* Tutorials: a tutorial is a progressive introduction to a topic. It
+* Introductions: each of these articles is a progressive introduction to a topic. It
   can reference freely other parts of the book.
 * Case studies: a case study looks into a particular problem and
   solves it using the concepts introduced in this book.
-* Discussions: a discussion looks into choices made in this book,
-  compares it to some other approaches, and attempts to justify them.
+* Extensions: creative possibilities that are not known to be true or false.
