@@ -64,8 +64,8 @@ class Article:
 class Chapter:
     id_: str
     title: str
-    # introduction
     markdown_introduction: str
+    article_title_prefix: str
     articles: List[Article]
 
 
@@ -344,7 +344,9 @@ def export_to_markdown_page(chapters: List[Chapter]) -> None:
             print(f"{chapter.markdown_introduction}\n")
         for article in chapter.articles:
             print(f"<div><a id='{article.main_id}'/></div>\n")
-            print(f"### {article.title}\n")
+            print(f"### <a href='#{article.main_id}'"
+                  f" style='font-weight:normal; color: grey'>#</a> "
+                  f"{chapter.article_title_prefix}{article.title}\n")
             print(f"{''.join(article.markdown_lines)}\n")
 
 
@@ -352,6 +354,7 @@ DEFINITIONS = Chapter(
     id_="definitions",
     title="Definitions",
     markdown_introduction="",
+    article_title_prefix="<span style='font-weight:normal'>Definition:</span> ",
     articles=[]
 )
 
@@ -359,6 +362,7 @@ INTRODUCTIONS = Chapter(
     id_="introductions",
     title="Introductions",
     markdown_introduction="",
+    article_title_prefix="",
     articles=[]
 )
 
@@ -366,6 +370,7 @@ CASE_STUDIES = Chapter(
     id_="case-studies",
     title="Case Studies",
     markdown_introduction="",
+    article_title_prefix="",
     articles=[]
 )
 
@@ -373,6 +378,7 @@ EXTENSIONS = Chapter(
     id_="extensions",
     title="Extensions",
     markdown_introduction="",
+    article_title_prefix="",
     articles=[]
 )
 
