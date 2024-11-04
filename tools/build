@@ -152,7 +152,7 @@ def resolve_link(synonym_map: Dict[str, str], link: str) -> str:
     if key in synonym_map:
         return synonym_map[key]
     else:
-        raise Exception("invalid link: '{link}'")
+        raise Exception(f"invalid link: '{link}'")
 
 
 def resolve_link_synonyms(synonym_map: Dict[str, str], line: str) -> str:
@@ -229,8 +229,6 @@ def parse_article(main_id: str, lines: List[str]) -> Article:
                     pass
                 elif key == 'title':
                     title = value
-                elif key == 'id':
-                    main_id = value
                 elif key == 'synonyms':
                     synonyms = [x.strip() for x in value.split(',')]
                     ids.update(synonyms)
