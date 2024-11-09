@@ -372,7 +372,7 @@ INTRODUCTIONS = Chapter(
     id_="introductions",
     title="Introductions",
     markdown_introduction="",
-    article_title_prefix="<span style='font-weight:normal'>Introduction:</span> ",
+    article_title_prefix="",
     articles=[]
 )
 
@@ -380,7 +380,7 @@ CASE_STUDIES = Chapter(
     id_="case-studies",
     title="Case Studies",
     markdown_introduction="",
-    article_title_prefix="<span style='font-weight:normal'>Case Study:</span> ",
+    article_title_prefix="",
     articles=[]
 )
 
@@ -388,7 +388,7 @@ EXTENSIONS = Chapter(
     id_="extensions",
     title="Extensions",
     markdown_introduction="",
-    article_title_prefix="<span style='font-weight:normal'>Extension:</span> ",
+    article_title_prefix="",
     articles=[]
 )
 
