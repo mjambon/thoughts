@@ -364,7 +364,7 @@ DEFINITIONS = Chapter(
     id_="definitions",
     title="Definitions",
     markdown_introduction="",
-    article_title_prefix="<span style='font-weight:normal'>Definition:</span> ",
+    article_title_prefix="<span class='def-prefix'>def</span> ",
     articles=[]
 )
 

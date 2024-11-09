@@ -1,6 +1,7 @@
 body {
   --background-color: #fdfdfd;
   --text-color: #1a1a1a;
+  --light-text-color: #808080;
 
   background-color: var(--background-color);
   color: var(--text-color);
@@ -28,4 +29,10 @@ a, a:visited {
   font-size: 1em;
   text-decoration: none;
   margin-left: 2em;
+}
+
+.def-prefix {
+  color: var(--light-text-color);
+  margin-right: 2em;
+  font-weight: normal;
 }
