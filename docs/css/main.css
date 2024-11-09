@@ -1,0 +1,31 @@
+body {
+  --background-color: #fdfdfd;
+  --text-color: #1a1a1a;
+
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 1em auto 2.5em auto;
+  padding: 0.5em 1.5em;
+  max-width: 90ex;
+  text-align: left;
+  font-family: serif;
+  font-style: normal;
+}
+
+a, a:visited {
+  color: var(--text-color);
+}
+
+.toc-chapter {
+  color: var(--text-color);
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.toc-article {
+  color: var(--text-color);
+  font-size: 1em;
+  text-decoration: none;
+  margin-left: 2em;
+}

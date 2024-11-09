@@ -6,147 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>Thoughts</title>
   <style>
-    html {
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 12px;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-    }
-    @media print {
-      html {
-        background-color: white;
-      }
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
-      font-size: 85%;
-      margin: 0;
-      hyphens: manual;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      background-color: #1a1a1a;
-      border: none;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-left: 1.3em;
-    }
-    #TOC > ul {
-      padding-left: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -163,185 +22,184 @@
     }
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
+  <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
 <header id="title-block-header">
 <h1 class="title">Thoughts</h1>
 </header>
-<nav id="TOC" role="doc-toc">
-<ul>
-<li><a href="#definitions" id="toc-definitions">Definitions</a>
-<ul>
-<li><a href="#definition-world"
-id="toc-definition-world"><a href='#world' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> World</a></li>
-<li><a href="#definition-model"
-id="toc-definition-model"><a href='#model' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Model</a></li>
-<li><a href="#definition-time"
-id="toc-definition-time"><a href='#time' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Time</a></li>
-<li><a href="#definition-system"
-id="toc-definition-system"><a href='#system' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> System</a></li>
-<li><a href="#definition-environment"
-id="toc-definition-environment"><a href='#environment' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Environment</a></li>
-<li><a href="#definition-sensing"
-id="toc-definition-sensing"><a href='#sensing' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Sensing</a></li>
-<li><a href="#definition-parameter"
-id="toc-definition-parameter"><a href='#parameter' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Parameter</a></li>
-<li><a href="#definition-state"
-id="toc-definition-state"><a href='#state' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> State</a></li>
-<li><a href="#definition-mutable"
-id="toc-definition-mutable"><a href='#mutable' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Mutable</a></li>
-<li><a href="#definition-individual"
-id="toc-definition-individual"><a href='#individual' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Individual</a></li>
-<li><a href="#definition-artificial"
-id="toc-definition-artificial"><a href='#artificial' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Artificial</a></li>
-<li><a href="#definition-identity"
-id="toc-definition-identity"><a href='#identity' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Identity</a></li>
-<li><a href="#definition-set"
-id="toc-definition-set"><a href='#set' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Set</a></li>
-<li><a href="#definition-rule"
-id="toc-definition-rule"><a href='#rule' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Rule</a></li>
-<li><a href="#definition-society"
-id="toc-definition-society"><a href='#society' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Society</a></li>
-<li><a href="#definition-nature"
-id="toc-definition-nature"><a href='#nature' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Nature</a></li>
-<li><a href="#definition-tool"
-id="toc-definition-tool"><a href='#tool' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Tool</a></li>
-<li><a href="#definition-activity"
-id="toc-definition-activity"><a href='#activity' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Activity</a></li>
-<li><a href="#definition-science"
-id="toc-definition-science"><a href='#science' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Science</a></li>
-<li><a href="#definition-creation"
-id="toc-definition-creation"><a href='#creation' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Creation</a></li>
-<li><a href="#definition-engineering"
-id="toc-definition-engineering"><a href='#engineering' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Engineering</a></li>
-<li><a href="#definition-art"
-id="toc-definition-art"><a href='#art' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Art</a></li>
-<li><a href="#definition-mathematics"
-id="toc-definition-mathematics"><a href='#mathematics' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Mathematics</a></li>
-<li><a href="#definition-computer"
-id="toc-definition-computer"><a href='#computer' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Computer</a></li>
-<li><a href="#definition-logic"
-id="toc-definition-logic"><a href='#logic' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Logic</a></li>
-<li><a href="#definition-computation"
-id="toc-definition-computation"><a href='#computation' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Computation</a></li>
-<li><a href="#definition-program"
-id="toc-definition-program"><a href='#program' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Program</a></li>
-<li><a href="#definition-algorithm"
-id="toc-definition-algorithm"><a href='#algorithm' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Algorithm</a></li>
-<li><a href="#definition-action"
-id="toc-definition-action"><a href='#action' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Action</a></li>
-<li><a href="#definition-decision"
-id="toc-definition-decision"><a href='#decision' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Decision</a></li>
-<li><a href="#definition-mind"
-id="toc-definition-mind"><a href='#mind' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Mind</a></li>
-<li><a href="#definition-cognition"
-id="toc-definition-cognition"><a href='#cognition' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Cognition</a></li>
-<li><a href="#definition-concept"
-id="toc-definition-concept"><a href='#concept' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Concept</a></li>
-<li><a href="#definition-abstract"
-id="toc-definition-abstract"><a href='#abstract' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Abstract</a></li>
-<li><a href="#definition-concrete"
-id="toc-definition-concrete"><a href='#concrete' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Concrete</a></li>
-<li><a href="#definition-intuition"
-id="toc-definition-intuition"><a href='#intuition' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Intuition</a></li>
-<li><a href="#definition-perception"
-id="toc-definition-perception"><a href='#perception' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Perception</a></li>
-<li><a href="#definition-reaction"
-id="toc-definition-reaction"><a href='#reaction' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Reaction</a></li>
-<li><a href="#definition-optimization"
-id="toc-definition-optimization"><a href='#optimization' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span>
-Optimization</a></li>
-<li><a href="#definition-feedback"
-id="toc-definition-feedback"><a href='#feedback' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Feedback</a></li>
-<li><a href="#definition-symbol"
-id="toc-definition-symbol"><a href='#symbol' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Symbol</a></li>
-<li><a href="#definition-reasoning"
-id="toc-definition-reasoning"><a href='#reasoning' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Reasoning</a></li>
-<li><a href="#definition-sentence"
-id="toc-definition-sentence"><a href='#sentence' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Sentence</a></li>
-<li><a href="#definition-language"
-id="toc-definition-language"><a href='#language' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Language</a></li>
-<li><a href="#definition-informal-language"
-id="toc-definition-informal-language"><a href='#informal-language' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Informal
-Language</a></li>
-<li><a href="#definition-formal-language"
-id="toc-definition-formal-language"><a href='#formal-language' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Formal
-Language</a></li>
-<li><a href="#definition-imagination"
-id="toc-definition-imagination"><a href='#imagination' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Imagination</a></li>
-<li><a href="#definition-implicit-model"
-id="toc-definition-implicit-model"><a href='#implicit-model' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Implicit
-Model</a></li>
-<li><a href="#definition-explicit-model"
-id="toc-definition-explicit-model"><a href='#explicit-model' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Explicit
-Model</a></li>
-<li><a href="#definition-understanding"
-id="toc-definition-understanding"><a href='#understanding' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span>
-Understanding</a></li>
-<li><a href="#definition-communication"
-id="toc-definition-communication"><a href='#communication' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span>
-Communication</a></li>
-<li><a href="#definition-taboo"
-id="toc-definition-taboo"><a href='#taboo' style='font-weight:normal; color: grey'>#</a>
-<span style="font-weight:normal">Definition:</span> Taboo</a></li>
-</ul></li>
-<li><a href="#introductions"
-id="toc-introductions">Introductions</a></li>
-<li><a href="#case-studies" id="toc-case-studies">Case Studies</a></li>
-<li><a href="#extensions" id="toc-extensions">Extensions</a></li>
-</ul>
-</nav>
+<h2 id="contents">Contents</h2>
+<div>
+<a href='#definitions' class='toc-chapter'>Definitions</a>
+</div>
+<div>
+<a href='#world' class='toc-article'>World</a>
+</div>
+<div>
+<a href='#model' class='toc-article'>Model</a>
+</div>
+<div>
+<a href='#time' class='toc-article'>Time</a>
+</div>
+<div>
+<a href='#system' class='toc-article'>System</a>
+</div>
+<div>
+<a href='#environment' class='toc-article'>Environment</a>
+</div>
+<div>
+<a href='#sensing' class='toc-article'>Sensing</a>
+</div>
+<div>
+<a href='#parameter' class='toc-article'>Parameter</a>
+</div>
+<div>
+<a href='#state' class='toc-article'>State</a>
+</div>
+<div>
+<a href='#mutable' class='toc-article'>Mutable</a>
+</div>
+<div>
+<a href='#individual' class='toc-article'>Individual</a>
+</div>
+<div>
+<a href='#artificial' class='toc-article'>Artificial</a>
+</div>
+<div>
+<a href='#identity' class='toc-article'>Identity</a>
+</div>
+<div>
+<a href='#set' class='toc-article'>Set</a>
+</div>
+<div>
+<a href='#rule' class='toc-article'>Rule</a>
+</div>
+<div>
+<a href='#society' class='toc-article'>Society</a>
+</div>
+<div>
+<a href='#nature' class='toc-article'>Nature</a>
+</div>
+<div>
+<a href='#tool' class='toc-article'>Tool</a>
+</div>
+<div>
+<a href='#activity' class='toc-article'>Activity</a>
+</div>
+<div>
+<a href='#science' class='toc-article'>Science</a>
+</div>
+<div>
+<a href='#creation' class='toc-article'>Creation</a>
+</div>
+<div>
+<a href='#engineering' class='toc-article'>Engineering</a>
+</div>
+<div>
+<a href='#art' class='toc-article'>Art</a>
+</div>
+<div>
+<a href='#mathematics' class='toc-article'>Mathematics</a>
+</div>
+<div>
+<a href='#computer' class='toc-article'>Computer</a>
+</div>
+<div>
+<a href='#logic' class='toc-article'>Logic</a>
+</div>
+<div>
+<a href='#computation' class='toc-article'>Computation</a>
+</div>
+<div>
+<a href='#program' class='toc-article'>Program</a>
+</div>
+<div>
+<a href='#algorithm' class='toc-article'>Algorithm</a>
+</div>
+<div>
+<a href='#action' class='toc-article'>Action</a>
+</div>
+<div>
+<a href='#decision' class='toc-article'>Decision</a>
+</div>
+<div>
+<a href='#mind' class='toc-article'>Mind</a>
+</div>
+<div>
+<a href='#cognition' class='toc-article'>Cognition</a>
+</div>
+<div>
+<a href='#concept' class='toc-article'>Concept</a>
+</div>
+<div>
+<a href='#abstract' class='toc-article'>Abstract</a>
+</div>
+<div>
+<a href='#concrete' class='toc-article'>Concrete</a>
+</div>
+<div>
+<a href='#intuition' class='toc-article'>Intuition</a>
+</div>
+<div>
+<a href='#perception' class='toc-article'>Perception</a>
+</div>
+<div>
+<a href='#reaction' class='toc-article'>Reaction</a>
+</div>
+<div>
+<a href='#optimization' class='toc-article'>Optimization</a>
+</div>
+<div>
+<a href='#feedback' class='toc-article'>Feedback</a>
+</div>
+<div>
+<a href='#symbol' class='toc-article'>Symbol</a>
+</div>
+<div>
+<a href='#reasoning' class='toc-article'>Reasoning</a>
+</div>
+<div>
+<a href='#sentence' class='toc-article'>Sentence</a>
+</div>
+<div>
+<a href='#language' class='toc-article'>Language</a>
+</div>
+<div>
+<a href='#informal-language' class='toc-article'>Informal Language</a>
+</div>
+<div>
+<a href='#formal-language' class='toc-article'>Formal Language</a>
+</div>
+<div>
+<a href='#imagination' class='toc-article'>Imagination</a>
+</div>
+<div>
+<a href='#implicit-model' class='toc-article'>Implicit Model</a>
+</div>
+<div>
+<a href='#explicit-model' class='toc-article'>Explicit Model</a>
+</div>
+<div>
+<a href='#understanding' class='toc-article'>Understanding</a>
+</div>
+<div>
+<a href='#communication' class='toc-article'>Communication</a>
+</div>
+<div>
+<a href='#taboo' class='toc-article'>Taboo</a>
+</div>
+<div>
+<a href='#introductions' class='toc-chapter'>Introductions</a>
+</div>
+<div>
+<a href='#case-studies' class='toc-chapter'>Case Studies</a>
+</div>
+<div>
+<a href='#extensions' class='toc-chapter'>Extensions</a>
+</div>
+<div>
+<a id='definitions'/>
+</div>
 <h2 id="definitions">Definitions</h2>
 <div>
 <a id='world'/>
@@ -943,8 +801,17 @@ concept that is completely avoided, possibly due to threats <a
 href="#communication">communicated</a> by others or more generally due
 to fear caused by <a href="#feedback">negative</a> past experience
 involving co-occurring concepts.</p>
+<div>
+<a id='introductions'/>
+</div>
 <h2 id="introductions">Introductions</h2>
+<div>
+<a id='case-studies'/>
+</div>
 <h2 id="case-studies">Case Studies</h2>
+<div>
+<a id='extensions'/>
+</div>
 <h2 id="extensions">Extensions</h2>
 </body>
 </html>

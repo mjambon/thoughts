@@ -337,8 +337,18 @@ def collect_articles(source_folder: Path, chapters: List[Chapter]) -> None:
         parse_article_phase2(synonym_map, article)
 
 
-def export_to_markdown_page(chapters: List[Chapter]) -> None:
+def export_html_table_of_contents(chapters: List[Chapter]) -> None:
+    print(f"## Contents")
     for chapter in chapters:
+        print(f"<div><a href='#{chapter.id_}' class='toc-chapter'>{chapter.title}</a></div>\n")
+        for article in chapter.articles:
+            print(f"<div><a href='#{article.main_id}' class='toc-article'>{article.title}</a></div>\n")
+
+
+def export_to_markdown_page(chapters: List[Chapter]) -> None:
+    export_html_table_of_contents(chapters)
+    for chapter in chapters:
+        print(f"<div><a id='{chapter.id_}'/></div>\n")
         print(f"## {chapter.title}\n")
         if chapter.markdown_introduction:
             print(f"{chapter.markdown_introduction}\n")
