@@ -37,7 +37,12 @@ import os
 #
 # Source file syntax:
 #
-# ...
+#   *** eat-vegetables
+#   title: Eat Vegetables!
+#   ids: vegetable, vegetables
+#
+#   You should eat a variety of fruits and vegetables as part of every
+#   meal.
 #
 #############################################################################
 
@@ -50,7 +55,7 @@ class Article:
     # properly capitalized title, should match ID closely
     title: str = ""
 
-    # alternative unique IDs main_id and lowercased title
+    # alternative unique IDs including main_id and lowercased title
     ids: Set[str] = field(default_factory=lambda: set())
 
     # article body
@@ -71,7 +76,10 @@ class Chapter:
 
 # Check that the articles are in an order that respects the dependencies
 def check_dependencies(articles: List[Article], allow_cycles: bool = False) -> None:
-    all_ids = { article.main_id for article in articles }
+    article: Article
+    all_ids = { id_
+                for article in articles
+                for id_ in article.ids }
     previous_ids: Set[str] = set()
     for article in articles:
         main_id = article.main_id
@@ -171,7 +179,7 @@ def make_links_local(line: str) -> str:
 # Extract bar from [foo](bar)
 #
 def extract_links(line: str) -> List[str]:
-    return [ x.group(2) for x in re.finditer(LINK_RE, line) ]
+    return [ x.group(2).lower() for x in re.finditer(LINK_RE, line) ]
 
 
 # Parse the article body and convert it to proper MarkDown.
@@ -321,20 +329,19 @@ def collect_articles(source_folder: Path, chapters: List[Chapter]) -> None:
         chapter.articles = \
             collect_articles_in_folder(source_folder / chapter.id_)
 
-    # Check for cyclic dependencies in definitions
-    check_dependencies(DEFINITIONS.articles)
-
     # Check for broken internal links
     all_articles: List[Article] = [
         article
         for chapter in CHAPTERS
         for article in chapter.articles
     ]
-    check_dependencies(all_articles, allow_cycles=True)
-
     synonym_map = make_synonym_map(all_articles)
     for article in all_articles:
         parse_article_phase2(synonym_map, article)
+
+    # Check for cyclic dependencies in definitions
+    check_dependencies(DEFINITIONS.articles)
+    check_dependencies(all_articles, allow_cycles=True)
 
 
 def export_html_table_of_contents(chapters: List[Chapter]) -> None:

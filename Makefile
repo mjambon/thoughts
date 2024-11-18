@@ -4,7 +4,7 @@
 build:
 	$(MAKE) -C tools build
 	mkdir -p _build
-	./tools/build src | tee _build/index.md
+	./tools/build src > _build/index.md
 	pandoc --standalone \
 	  --metadata title=Thoughts \
 	  --css css/main.css \
