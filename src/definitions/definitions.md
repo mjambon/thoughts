@@ -41,6 +41,31 @@ isolated from everything else, and therefore anything modeled within
 the world cannot learn anything about the existence or the nature of
 other worlds.
 
+*** mathematics
+title: Mathematics
+synonyms: math, maths, mathematical
+
+The study of unambiguous statements, or equivalently, the study of
+structure.
+
+What distinguishes a mathematical statement from an
+ordinary English sentence is that a mathematical statement is
+interpreted in the same way by all mathematicians at minimal effort
+and regardless of their beliefs about the world. A statement can only
+be proven from ground truths known as axioms, from other proven
+statements, and using a fixed set of symbols and rules that allow
+combining statements into new statements. A proven statement is known
+as a theorem. Proving a statement can be very hard. Some statements
+are easy to prove with a 20th-century computer and software while being
+tedious to prove by humans. Such proofs are generally referred to as
+computations. Other statements were proven by humans but could not yet
+proven by computers as of the beginning of the 21st century. Some
+statements cannot even be proven at all and are referred to as being
+undecidable. The relationship between proofs and computation, as well
+as their fundamental limitations are now well-understood. A basic
+understanding of these notions is considered a prerequisite in the
+rest of this book.
+
 *** model
 title: Model
 synonyms: models, modeled, representation, represented
@@ -52,7 +77,7 @@ necessarily simpler than the world in which it can be expressed. An
 example of a simple model is the representation of the sun and the
 earth as points in a 2-dimensional Euclidean space, with the sun being
 immobile and the earth rotating in a circular orbit over a one-year
-period. Elementary mathematical knowledge is sufficient to read and
+period. Elementary [mathematical] knowledge is sufficient to read and
 copy this model without mistakes. Our definition of a model includes
 any arrangement of information that is believed to form a world model
 but may not be accessed or copied in its entirety. For example, a
@@ -118,7 +143,7 @@ title: Parameter
 synonyms: parameters
 
 A parameter of a [model] is any property of this model that is left
-unspecified, defining a function in the usual mathematical sense.
+unspecified, defining a function in the usual [mathematical] sense.
 In general, a model can have any number of parameters.
 
 *** state
@@ -162,7 +187,7 @@ The collection of properties associated with an [individual].
 title: Set
 synonyms: sets
 
-A set as defined in mathematics by the axioms of set theory.
+A set as defined in [mathematics] by the axioms of set theory.
 
 *** rule
 title: Rule
@@ -231,14 +256,6 @@ The [activity] of [creating] [tools].
 title: Art
 
 The [activity] of [creating] anything that is not a [tool].
-
-*** mathematics
-title: Mathematics
-synonyms: math, maths, mathematical
-
-The study of the structure of unambiguous statements. Mathematics
-are useful for dealing with [models] in [science], [engineering], and
-other fields of study.
 
 *** computer
 title: Computer
