@@ -8,19 +8,10 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    ul.task-list{list-style: none;}
   </style>
   <link rel="stylesheet" href="css/main.css" />
 </head>
@@ -32,790 +23,300 @@
 <div>
 <a href='#definitions' class='toc-chapter'>Definitions</a>
 </div>
-<div>
-<a href='#world' class='toc-article'>World</a>
-</div>
-<div>
-<a href='#mathematics' class='toc-article'>Mathematics</a>
-</div>
-<div>
-<a href='#model' class='toc-article'>Model</a>
-</div>
-<div>
-<a href='#time' class='toc-article'>Time</a>
-</div>
-<div>
-<a href='#system' class='toc-article'>System</a>
-</div>
-<div>
-<a href='#environment' class='toc-article'>Environment</a>
-</div>
-<div>
-<a href='#sensing' class='toc-article'>Sensing</a>
-</div>
-<div>
-<a href='#parameter' class='toc-article'>Parameter</a>
-</div>
-<div>
-<a href='#state' class='toc-article'>State</a>
-</div>
-<div>
-<a href='#mutable' class='toc-article'>Mutable</a>
-</div>
-<div>
-<a href='#individual' class='toc-article'>Individual</a>
-</div>
-<div>
-<a href='#artificial' class='toc-article'>Artificial</a>
-</div>
-<div>
-<a href='#identity' class='toc-article'>Identity</a>
-</div>
-<div>
-<a href='#set' class='toc-article'>Set</a>
-</div>
-<div>
-<a href='#rule' class='toc-article'>Rule</a>
-</div>
-<div>
-<a href='#society' class='toc-article'>Society</a>
-</div>
-<div>
-<a href='#nature' class='toc-article'>Nature</a>
-</div>
-<div>
-<a href='#tool' class='toc-article'>Tool</a>
-</div>
-<div>
-<a href='#activity' class='toc-article'>Activity</a>
-</div>
-<div>
-<a href='#science' class='toc-article'>Science</a>
-</div>
-<div>
-<a href='#creation' class='toc-article'>Creation</a>
-</div>
-<div>
-<a href='#engineering' class='toc-article'>Engineering</a>
-</div>
-<div>
-<a href='#art' class='toc-article'>Art</a>
-</div>
-<div>
-<a href='#computer' class='toc-article'>Computer</a>
-</div>
-<div>
-<a href='#logic' class='toc-article'>Logic</a>
-</div>
-<div>
-<a href='#computation' class='toc-article'>Computation</a>
-</div>
-<div>
-<a href='#program' class='toc-article'>Program</a>
-</div>
-<div>
-<a href='#algorithm' class='toc-article'>Algorithm</a>
-</div>
-<div>
-<a href='#action' class='toc-article'>Action</a>
-</div>
-<div>
-<a href='#decision' class='toc-article'>Decision</a>
-</div>
-<div>
-<a href='#mind' class='toc-article'>Mind</a>
-</div>
-<div>
-<a href='#cognition' class='toc-article'>Cognition</a>
-</div>
-<div>
-<a href='#concept' class='toc-article'>Concept</a>
-</div>
-<div>
-<a href='#abstract' class='toc-article'>Abstract</a>
-</div>
-<div>
-<a href='#concrete' class='toc-article'>Concrete</a>
-</div>
-<div>
-<a href='#intuition' class='toc-article'>Intuition</a>
-</div>
-<div>
-<a href='#perception' class='toc-article'>Perception</a>
-</div>
-<div>
-<a href='#reaction' class='toc-article'>Reaction</a>
-</div>
-<div>
-<a href='#optimization' class='toc-article'>Optimization</a>
-</div>
-<div>
-<a href='#feedback' class='toc-article'>Feedback</a>
-</div>
-<div>
-<a href='#symbol' class='toc-article'>Symbol</a>
-</div>
-<div>
-<a href='#reasoning' class='toc-article'>Reasoning</a>
-</div>
-<div>
-<a href='#sentence' class='toc-article'>Sentence</a>
-</div>
-<div>
-<a href='#language' class='toc-article'>Language</a>
-</div>
-<div>
-<a href='#informal-language' class='toc-article'>Informal Language</a>
-</div>
-<div>
-<a href='#formal-language' class='toc-article'>Formal Language</a>
-</div>
-<div>
-<a href='#imagination' class='toc-article'>Imagination</a>
-</div>
-<div>
-<a href='#implicit-model' class='toc-article'>Implicit Model</a>
-</div>
-<div>
-<a href='#explicit-model' class='toc-article'>Explicit Model</a>
-</div>
-<div>
-<a href='#understanding' class='toc-article'>Understanding</a>
-</div>
-<div>
-<a href='#communication' class='toc-article'>Communication</a>
-</div>
-<div>
-<a href='#taboo' class='toc-article'>Taboo</a>
+<div class="toc-chapter-body">
+<p><a href='#world' class='toc-article-compact'>World</a> <a href='#mathematics' class='toc-article-compact'>Mathematics</a> <a href='#model' class='toc-article-compact'>Model</a> <a href='#time' class='toc-article-compact'>Time</a> <a href='#system' class='toc-article-compact'>System</a> <a href='#environment' class='toc-article-compact'>Environment</a> <a href='#sensing' class='toc-article-compact'>Sensing</a> <a href='#parameter' class='toc-article-compact'>Parameter</a> <a href='#state' class='toc-article-compact'>State</a> <a href='#mutable' class='toc-article-compact'>Mutable</a> <a href='#individual' class='toc-article-compact'>Individual</a> <a href='#artificial' class='toc-article-compact'>Artificial</a> <a href='#identity' class='toc-article-compact'>Identity</a> <a href='#set' class='toc-article-compact'>Set</a> <a href='#rule' class='toc-article-compact'>Rule</a> <a href='#society' class='toc-article-compact'>Society</a> <a href='#nature' class='toc-article-compact'>Nature</a> <a href='#tool' class='toc-article-compact'>Tool</a> <a href='#activity' class='toc-article-compact'>Activity</a> <a href='#science' class='toc-article-compact'>Science</a> <a href='#creation' class='toc-article-compact'>Creation</a> <a href='#engineering' class='toc-article-compact'>Engineering</a> <a href='#art' class='toc-article-compact'>Art</a> <a href='#computer' class='toc-article-compact'>Computer</a> <a href='#logic' class='toc-article-compact'>Logic</a> <a href='#computation' class='toc-article-compact'>Computation</a> <a href='#program' class='toc-article-compact'>Program</a> <a href='#algorithm' class='toc-article-compact'>Algorithm</a> <a href='#action' class='toc-article-compact'>Action</a> <a href='#decision' class='toc-article-compact'>Decision</a> <a href='#mind' class='toc-article-compact'>Mind</a> <a href='#cognition' class='toc-article-compact'>Cognition</a> <a href='#concept' class='toc-article-compact'>Concept</a> <a href='#abstract' class='toc-article-compact'>Abstract</a> <a href='#concrete' class='toc-article-compact'>Concrete</a> <a href='#intuition' class='toc-article-compact'>Intuition</a> <a href='#perception' class='toc-article-compact'>Perception</a> <a href='#reaction' class='toc-article-compact'>Reaction</a> <a href='#optimization' class='toc-article-compact'>Optimization</a> <a href='#feedback' class='toc-article-compact'>Feedback</a> <a href='#symbol' class='toc-article-compact'>Symbol</a> <a href='#reasoning' class='toc-article-compact'>Reasoning</a> <a href='#sentence' class='toc-article-compact'>Sentence</a> <a href='#language' class='toc-article-compact'>Language</a> <a href='#informal-language' class='toc-article-compact'>Informal Language</a> <a href='#formal-language' class='toc-article-compact'>Formal Language</a> <a href='#imagination' class='toc-article-compact'>Imagination</a> <a href='#implicit-model' class='toc-article-compact'>Implicit Model</a> <a href='#explicit-model' class='toc-article-compact'>Explicit Model</a> <a href='#understanding' class='toc-article-compact'>Understanding</a> <a href='#communication' class='toc-article-compact'>Communication</a> <a href='#taboo' class='toc-article-compact'>Taboo</a></p>
 </div>
 <div>
 <a href='#introductions' class='toc-chapter'>Introductions</a>
 </div>
+<div class="toc-chapter-body">
+
+</div>
 <div>
 <a href='#case-studies' class='toc-chapter'>Case Studies</a>
 </div>
+<div class="toc-chapter-body">
+
+</div>
 <div>
 <a href='#extensions' class='toc-chapter'>Extensions</a>
+</div>
+<div class="toc-chapter-body">
+
 </div>
 <div>
 <a id='definitions'/>
 </div>
 <h2 id="definitions">Definitions</h2>
+<p>This a collection of definitions that are important to us. They’re listed such that no term is referenced before its definition. This guarantees no circular definitions.</p>
 <div>
 <a id='world'/>
 </div>
-<h3
-id="def-world"><a href='#world' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> World</h3>
-<p>A subject of study plus everything that interacts with it directly or
-indirectly. It is normally referred to as “the” world because it is
-everything that exists from the subject’s perspective. An interaction
-can be modeled as a flow of information, for some definition of
-information to be specified. A world is isolated from everything else,
-and therefore anything modeled within the world cannot learn anything
-about the existence or the nature of other worlds.</p>
+<h3 id="def-world"><a href='#world' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> World</h3>
+<p>A subject of study plus everything that interacts with it directly or indirectly. It is normally referred to as “the” world because it is everything that exists from the subject’s perspective. An interaction can be modeled as a flow of information, for some definition of information to be specified. A world is isolated from everything else, and therefore anything modeled within the world cannot learn anything about the existence or the nature of other worlds.</p>
 <div>
 <a id='mathematics'/>
 </div>
-<h3
-id="def-mathematics"><a href='#mathematics' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Mathematics</h3>
-<p>The study of unambiguous statements, or equivalently, the study of
-structure.</p>
-<p>What distinguishes a mathematical statement from an ordinary English
-sentence is that a mathematical statement is interpreted in the same way
-by all mathematicians at minimal effort and regardless of their beliefs
-about the world. A statement can only be proven from ground truths known
-as axioms, from other proven statements, and using a fixed set of
-symbols and rules that allow combining statements into new statements. A
-proven statement is known as a theorem. Proving a statement can be very
-hard. Some statements are easy to prove with a 20th-century computer and
-software while being tedious to prove by humans. Such proofs are
-generally referred to as computations. Other statements were proven by
-humans but could not yet proven by computers as of the beginning of the
-21st century. Some statements cannot even be proven at all and are
-referred to as being undecidable. The relationship between proofs and
-computation, as well as their fundamental limitations are now
-well-understood. A basic understanding of these notions is considered a
-prerequisite in the rest of this book.</p>
+<h3 id="def-mathematics"><a href='#mathematics' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Mathematics</h3>
+<p>The study of unambiguous statements, or equivalently, the study of structure.</p>
+<p>What distinguishes a mathematical statement from an ordinary English sentence is that a mathematical statement is interpreted in the same way by all mathematicians at minimal effort and regardless of their beliefs about the world. A statement can only be proven from ground truths known as axioms, from other proven statements, and using a fixed set of symbols and rules that allow combining statements into new statements. A proven statement is known as a theorem. Proving a statement can be very hard. Some statements are easy to prove with a 20th-century computer and software while being tedious to prove by humans. Such proofs are generally referred to as computations. Other statements were proven by humans but could not yet proven by computers as of the beginning of the 21st century. Some statements cannot even be proven at all and are referred to as being undecidable. The relationship between proofs and computation, as well as their fundamental limitations are now well-understood. A basic understanding of these notions is considered a prerequisite in the rest of this book.</p>
 <div>
 <a id='model'/>
 </div>
-<h3
-id="def-model"><a href='#model' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Model</h3>
-<p>An unambiguous representation of the <a href="#world">world</a>. As
-such, a model can in principle, given sufficient technology, be
-translated into another language and recovered back without loss. A
-model is necessarily simpler than the world in which it can be
-expressed. An example of a simple model is the representation of the sun
-and the earth as points in a 2-dimensional Euclidean space, with the sun
-being immobile and the earth rotating in a circular orbit over a
-one-year period. Elementary <a href="#mathematics">mathematical</a>
-knowledge is sufficient to read and copy this model without mistakes.
-Our definition of a model includes any arrangement of information that
-is believed to form a world model but may not be accessed or copied in
-its entirety. For example, a human body, mostly in its brain, holds
-world model, some of which was learned by interacting with it since
-birth. While we may not have the technology to copy correctly and
-completely the relevant information from a human brain, we assume it’s
-all in there. Such world model that’s a necessary part of any human mind
-shall not be confused with whatever explicit models a thinker or
-scientist can construct and publish.</p>
+<h3 id="def-model"><a href='#model' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Model</h3>
+<p>An unambiguous representation of the <a href="#world">world</a>. As such, a model can in principle, given sufficient technology, be translated into another language and recovered back without loss. A model is necessarily simpler than the world in which it can be expressed. An example of a simple model is the representation of the sun and the earth as points in a 2-dimensional Euclidean space, with the sun being immobile and the earth rotating in a circular orbit over a one-year period. Elementary <a href="#mathematics">mathematical</a> knowledge is sufficient to read and copy this model without mistakes. Our definition of a model includes any arrangement of information that is believed to form a world model but may not be accessed or copied in its entirety. For example, a human body, mostly in its brain, holds world model, some of which was learned by interacting with it since birth. While we may not have the technology to copy correctly and completely the relevant information from a human brain, we assume it’s all in there. Such world model that’s a necessary part of any human mind shall not be confused with whatever explicit models a thinker or scientist can construct and publish.</p>
 <div>
 <a id='time'/>
 </div>
-<h3
-id="def-time"><a href='#time' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Time</h3>
-<p>An ordering over the states of a <a href="#model">model</a>. Time is
-the breakdown of a model into a sequence of objects called states with
-constraints over those states. A more specific definition of time is
-part of each model, if the model relies on such notion of time or
-successive states. Unless otherwise specified, the stepwise execution of
-computer programs uses a discrete, nonnegative index t to reference the
-successive steps of a computation. An ideal scenario is a computation of
-discrete states starting from an initial state t = 0 and a transition
-function. The transition function computes the next state from the
-previous one. Such computations are called simulations. More generally
-however, when there is no need for computing successive states, time is
-usually modeled as the real line.</p>
+<h3 id="def-time"><a href='#time' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Time</h3>
+<p>An ordering over the states of a <a href="#model">model</a>. Time is the breakdown of a model into a sequence of objects called states with constraints over those states. A more specific definition of time is part of each model, if the model relies on such notion of time or successive states. Unless otherwise specified, the stepwise execution of computer programs uses a discrete, nonnegative index t to reference the successive steps of a computation. An ideal scenario is a computation of discrete states starting from an initial state t = 0 and a transition function. The transition function computes the next state from the previous one. Such computations are called simulations. More generally however, when there is no need for computing successive states, time is usually modeled as the real line.</p>
 <div>
 <a id='system'/>
 </div>
-<h3
-id="def-system"><a href='#system' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> System</h3>
-<p>A system refers to a partial <a href="#model">model</a>. It can be
-obtained by taking some elements of a <a href="#world">world</a> model
-and ignoring all interactions with the rest of the world, or by modeling
-the rest of the world in a simpler manner than in the original model.
-For example, modeling a car could consist in retaining a model of the
-car components as well as a model of a road and how the car interacts
-with the road, discarding all other elements of the world such as
-buildings and trees. In this example, the car is the system and the road
-is the rest of the world.</p>
+<h3 id="def-system"><a href='#system' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> System</h3>
+<p>A system refers to a partial <a href="#model">model</a>. It can be obtained by taking some elements of a <a href="#world">world</a> model and ignoring all interactions with the rest of the world, or by modeling the rest of the world in a simpler manner than in the original model. For example, modeling a car could consist in retaining a model of the car components as well as a model of a road and how the car interacts with the road, discarding all other elements of the world such as buildings and trees. In this example, the car is the system and the road is the rest of the world.</p>
 <div>
 <a id='environment'/>
 </div>
-<h3
-id="def-environment"><a href='#environment' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Environment</h3>
-<p>In a <a href="#model">model</a> comprising <a
-href="#system">systems</a>, the environment refers to everything in the
-model that’s not part of the system under consideration.</p>
+<h3 id="def-environment"><a href='#environment' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Environment</h3>
+<p>In a <a href="#model">model</a> comprising <a href="#system">systems</a>, the environment refers to everything in the model that’s not part of the system under consideration.</p>
 <div>
 <a id='sensing'/>
 </div>
-<h3
-id="def-sensing"><a href='#sensing' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Sensing</h3>
-<p>The acquisition of raw data by a <a href="#system">system</a> from
-the <a href="#environment">environment</a>. This is usually done by
-special-purpose parts of the system, which are called sensors.</p>
+<h3 id="def-sensing"><a href='#sensing' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Sensing</h3>
+<p>The acquisition of raw data by a <a href="#system">system</a> from the <a href="#environment">environment</a>. This is usually done by special-purpose parts of the system, which are called sensors.</p>
 <div>
 <a id='parameter'/>
 </div>
-<h3
-id="def-parameter"><a href='#parameter' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Parameter</h3>
-<p>A parameter of a <a href="#model">model</a> is any property of this
-model that is left unspecified, defining a function in the usual <a
-href="#mathematics">mathematical</a> sense. In general, a model can have
-any number of parameters.</p>
+<h3 id="def-parameter"><a href='#parameter' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Parameter</h3>
+<p>A parameter of a <a href="#model">model</a> is any property of this model that is left unspecified, defining a function in the usual <a href="#mathematics">mathematical</a> sense. In general, a model can have any number of parameters.</p>
 <div>
 <a id='state'/>
 </div>
-<h3
-id="def-state"><a href='#state' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> State</h3>
-<p>A particular instantiation of the <a href="#parameter">parameters</a>
-of a <a href="#model">model</a>.</p>
+<h3 id="def-state"><a href='#state' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> State</h3>
+<p>A particular instantiation of the <a href="#parameter">parameters</a> of a <a href="#model">model</a>.</p>
 <div>
 <a id='mutable'/>
 </div>
-<h3
-id="def-mutable"><a href='#mutable' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Mutable</h3>
-<p>An entity is said mutable when it consists of <a
-href="#time">time</a>-indexed sequence of <a href="#state">states</a>.
-Such sequence of states is meant to represent successive transformation
-of an initial object within a model.</p>
+<h3 id="def-mutable"><a href='#mutable' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Mutable</h3>
+<p>An entity is said mutable when it consists of <a href="#time">time</a>-indexed sequence of <a href="#state">states</a>. Such sequence of states is meant to represent successive transformation of an initial object within a model.</p>
 <div>
 <a id='individual'/>
 </div>
-<h3
-id="def-individual"><a href='#individual' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Individual</h3>
-<p>In a <a href="#model">model</a> of the <a href="#world">world</a>, an
-individual is a <a href="#mutable">mutable</a> <a
-href="#system">system</a> which interacts with the rest of world,
-including other individuals. Each individual exists for some continuous
-period of <a href="#time">time</a>, usually in a binary fashion: at a
-given time, the individual either exists or doesn’t exist.</p>
+<h3 id="def-individual"><a href='#individual' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Individual</h3>
+<p>In a <a href="#model">model</a> of the <a href="#world">world</a>, an individual is a <a href="#mutable">mutable</a> <a href="#system">system</a> which interacts with the rest of world, including other individuals. Each individual exists for some continuous period of <a href="#time">time</a>, usually in a binary fashion: at a given time, the individual either exists or doesn’t exist.</p>
 <div>
 <a id='artificial'/>
 </div>
-<h3
-id="def-artificial"><a href='#artificial' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Artificial</h3>
-<p>The property of being created by <a
-href="#individual">individuals</a>, as opposed to being imposed by the
-<a href="#model">model</a> of the <a href="#world">world</a> in which
-the individuals exist.</p>
+<h3 id="def-artificial"><a href='#artificial' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Artificial</h3>
+<p>The property of being created by <a href="#individual">individuals</a>, as opposed to being imposed by the <a href="#model">model</a> of the <a href="#world">world</a> in which the individuals exist.</p>
 <div>
 <a id='identity'/>
 </div>
-<h3
-id="def-identity"><a href='#identity' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Identity</h3>
-<p>The collection of properties associated with an <a
-href="#individual">individual</a>.</p>
+<h3 id="def-identity"><a href='#identity' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Identity</h3>
+<p>The collection of properties associated with an <a href="#individual">individual</a>.</p>
 <div>
 <a id='set'/>
 </div>
-<h3
-id="def-set"><a href='#set' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Set</h3>
-<p>A set as defined in <a href="#mathematics">mathematics</a> by the
-axioms of set theory.</p>
+<h3 id="def-set"><a href='#set' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Set</h3>
+<p>A set as defined in <a href="#mathematics">mathematics</a> by the axioms of set theory.</p>
 <div>
 <a id='rule'/>
 </div>
-<h3
-id="def-rule"><a href='#rule' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Rule</h3>
-<p>An <a href="#artificial">artificial</a> constraint. Unlike a physical
-constraint which can apply to various portions of a <a
-href="#model">model</a>, an artificial constraint applies to <a
-href="#individual">individual</a> members of a society, and said members
-can decide whether to follow it.</p>
+<h3 id="def-rule"><a href='#rule' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Rule</h3>
+<p>An <a href="#artificial">artificial</a> constraint. Unlike a physical constraint which can apply to various portions of a <a href="#model">model</a>, an artificial constraint applies to <a href="#individual">individual</a> members of a society, and said members can decide whether to follow it.</p>
 <div>
 <a id='society'/>
 </div>
-<h3
-id="def-society"><a href='#society' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Society</h3>
-<p>A <a href="#set">set</a> of <a href="#individual">individuals</a>
-known as society members within a <a href="#model">model</a> of the <a
-href="#world">world</a>, and associated with <a
-href="#rule">rules</a>.</p>
+<h3 id="def-society"><a href='#society' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Society</h3>
+<p>A <a href="#set">set</a> of <a href="#individual">individuals</a> known as society members within a <a href="#model">model</a> of the <a href="#world">world</a>, and associated with <a href="#rule">rules</a>.</p>
 <div>
 <a id='nature'/>
 </div>
-<h3
-id="def-nature"><a href='#nature' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Nature</h3>
+<h3 id="def-nature"><a href='#nature' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Nature</h3>
 <p>A model of the world without a <a href="#society">society</a>.</p>
 <pre><code>- natural</code></pre>
 <div>
 <a id='tool'/>
 </div>
-<h3
-id="def-tool"><a href='#tool' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Tool</h3>
-<p>A tool, in the very general sense that interests us, is an extension
-of what’s normally considered the body of an individual and facilitates
-their interaction with the <a href="#environment">environment</a>. This
-definition includes all machines, methods, and processes stored outside
-of the normal body of an individual. In the usual human world, this
-includes not just physical devices such as a hammer or a computer, but
-also all data stored outside the body such as books and other
-recordings. Therefore, other individuals can also be considered as tools
-according this definition.</p>
+<h3 id="def-tool"><a href='#tool' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Tool</h3>
+<p>A tool, in the very general sense that interests us, is an extension of what’s normally considered the body of an individual and facilitates their interaction with the <a href="#environment">environment</a>. This definition includes all machines, methods, and processes stored outside of the normal body of an individual. In the usual human world, this includes not just physical devices such as a hammer or a computer, but also all data stored outside the body such as books and other recordings. Therefore, other individuals can also be considered as tools according this definition.</p>
 <div>
 <a id='activity'/>
 </div>
-<h3
-id="def-activity"><a href='#activity' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Activity</h3>
-<p>Collection of events involving <a href="#individual">individuals</a>
-using specific <a href="#tool">tools</a> or methods.</p>
+<h3 id="def-activity"><a href='#activity' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Activity</h3>
+<p>Collection of events involving <a href="#individual">individuals</a> using specific <a href="#tool">tools</a> or methods.</p>
 <div>
 <a id='science'/>
 </div>
-<h3
-id="def-science"><a href='#science' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Science</h3>
-<p>The <a href="#activity">activity</a> consisting in creating and
-refining <a href="#model">models</a> of the <a
-href="#world">world</a>.</p>
+<h3 id="def-science"><a href='#science' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Science</h3>
+<p>The <a href="#activity">activity</a> consisting in creating and refining <a href="#model">models</a> of the <a href="#world">world</a>.</p>
 <div>
 <a id='creation'/>
 </div>
-<h3
-id="def-creation"><a href='#creation' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Creation</h3>
-<p><a href="#activity">Activity</a> whose impact on the <a
-href="#world">world</a> is noticed and becomes associated with a new
-concept, in some <a href="#model">model</a> of interest.</p>
+<h3 id="def-creation"><a href='#creation' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Creation</h3>
+<p><a href="#activity">Activity</a> whose impact on the <a href="#world">world</a> is noticed and becomes associated with a new concept, in some <a href="#model">model</a> of interest.</p>
 <div>
 <a id='engineering'/>
 </div>
-<h3
-id="def-engineering"><a href='#engineering' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Engineering</h3>
-<p>The <a href="#activity">activity</a> of <a
-href="#creation">creating</a> <a href="#tool">tools</a>.</p>
+<h3 id="def-engineering"><a href='#engineering' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Engineering</h3>
+<p>The <a href="#activity">activity</a> of <a href="#creation">creating</a> <a href="#tool">tools</a>.</p>
 <div>
 <a id='art'/>
 </div>
-<h3
-id="def-art"><a href='#art' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Art</h3>
-<p>The <a href="#activity">activity</a> of <a
-href="#creation">creating</a> anything that is not a <a
-href="#tool">tool</a>.</p>
+<h3 id="def-art"><a href='#art' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Art</h3>
+<p>The <a href="#activity">activity</a> of <a href="#creation">creating</a> anything that is not a <a href="#tool">tool</a>.</p>
 <div>
 <a id='computer'/>
 </div>
-<h3
-id="def-computer"><a href='#computer' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Computer</h3>
-<p>A finite <a href="#system">system</a> that reads discrete
-instructions and carries them out predictably. A computer can be <a
-href="#model">represented</a> as a sequence of <a
-href="#state">states</a> comprising a <a href="#mutable">mutable</a>,
-discrete storage space. Turing machines are idealized representations of
-computers with unbounded storage or memory; they are used in theoretical
-studies for proving some properties of computers. This definition
-excludes hypercomputers, which would allow solving problems that Turing
-machines cannot, such as the halting problem.</p>
+<h3 id="def-computer"><a href='#computer' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Computer</h3>
+<p>A finite <a href="#system">system</a> that reads discrete instructions and carries them out predictably. A computer can be <a href="#model">represented</a> as a sequence of <a href="#state">states</a> comprising a <a href="#mutable">mutable</a>, discrete storage space. Turing machines are idealized representations of computers with unbounded storage or memory; they are used in theoretical studies for proving some properties of computers. This definition excludes hypercomputers, which would allow solving problems that Turing machines cannot, such as the halting problem.</p>
 <div>
 <a id='logic'/>
 </div>
-<h3
-id="def-logic"><a href='#logic' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Logic</h3>
-<p>The <a href="#mathematics">mathematical</a> subfield of logic. It is
-focused on the general properties of formal systems and characterizing
-what can and cannot be done with mathematics and <a
-href="#computer">computers</a>.</p>
+<h3 id="def-logic"><a href='#logic' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Logic</h3>
+<p>The <a href="#mathematics">mathematical</a> subfield of logic. It is focused on the general properties of formal systems and characterizing what can and cannot be done with mathematics and <a href="#computer">computers</a>.</p>
 <div>
 <a id='computation'/>
 </div>
-<h3
-id="def-computation"><a href='#computation' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Computation</h3>
-<p>The <a href="#time">successive</a> <a href="#state">states</a> of a
-<a href="#computer">computer</a>.</p>
+<h3 id="def-computation"><a href='#computation' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Computation</h3>
+<p>The <a href="#time">successive</a> <a href="#state">states</a> of a <a href="#computer">computer</a>.</p>
 <div>
 <a id='program'/>
 </div>
-<h3
-id="def-program"><a href='#program' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Program</h3>
-<p>A computer program in the usual sense. A program consists of a finite
-collection of instructions that can be executed by a computer or by a
-Turing machine. A program may or may not take external input. In
-theoretical studies, the input is often baked into the program or into
-the initial state of the computer’s memory. A program may or not
-terminate. Determining whether a program terminates is not always
-possible, which is known as the halting problem. A program can be viewed
-as a mathematical proof and vice-versa, which is known as the
-Curry-Howard correspondence, and offers a link between <a
-href="#logic">logic</a> and <a href="#computation">computation</a>.</p>
+<h3 id="def-program"><a href='#program' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Program</h3>
+<p>A computer program in the usual sense. A program consists of a finite collection of instructions that can be executed by a computer or by a Turing machine. A program may or may not take external input. In theoretical studies, the input is often baked into the program or into the initial state of the computer’s memory. A program may or not terminate. Determining whether a program terminates is not always possible, which is known as the halting problem. A program can be viewed as a mathematical proof and vice-versa, which is known as the Curry-Howard correspondence, and offers a link between <a href="#logic">logic</a> and <a href="#computation">computation</a>.</p>
 <div>
 <a id='algorithm'/>
 </div>
-<h3
-id="def-algorithm"><a href='#algorithm' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Algorithm</h3>
+<h3 id="def-algorithm"><a href='#algorithm' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Algorithm</h3>
 <p>An algorithm is a <a href="#program">program</a> that terminates.</p>
 <div>
 <a id='action'/>
 </div>
-<h3
-id="def-action"><a href='#action' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Action</h3>
-<p>A change in two <a href="#time">successive</a> <a
-href="#state">states</a> of a <a href="#system">system</a> that
-determines a change elsewhere in the <a href="#world">world</a> <a
-href="#model">model</a>, possibly in the system itself.</p>
+<h3 id="def-action"><a href='#action' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Action</h3>
+<p>A change in two <a href="#time">successive</a> <a href="#state">states</a> of a <a href="#system">system</a> that determines a change elsewhere in the <a href="#world">world</a> <a href="#model">model</a>, possibly in the system itself.</p>
 <div>
 <a id='decision'/>
 </div>
-<h3
-id="def-decision"><a href='#decision' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Decision</h3>
-<p>An <a href="#action">action</a> of a <a href="#system">system</a>
-onto itself, in particular when examining a small selection of possible
-actions that are mutually exclusive.</p>
+<h3 id="def-decision"><a href='#decision' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Decision</h3>
+<p>An <a href="#action">action</a> of a <a href="#system">system</a> onto itself, in particular when examining a small selection of possible actions that are mutually exclusive.</p>
 <div>
 <a id='mind'/>
 </div>
-<h3
-id="def-mind"><a href='#mind' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Mind</h3>
+<h3 id="def-mind"><a href='#mind' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Mind</h3>
 <ol type="1">
-<li>The components of a <a href="#system">system</a> that make it more
-durable independently from its other properties. This tentative
-definition is meant to incorporate the dualist notion that the mind is
-separate from the rest of the body and somewhat optional, while
-emphasizing that it’s only a simplified model useful for studying <a
-href="#decision">decision</a> <a href="#computation">processes</a>.</li>
-<li>A self-improving <a href="#world">world</a> <a
-href="#model">model</a>. In this equivalent view, the mind continuously
-gathers information about the <a href="#environment">environment</a>
-around the system and uses it to make better decisions.</li>
+<li>The components of a <a href="#system">system</a> that make it more durable independently from its other properties. This tentative definition is meant to incorporate the dualist notion that the mind is separate from the rest of the body and somewhat optional, while emphasizing that it’s only a simplified model useful for studying <a href="#decision">decision</a> <a href="#computation">processes</a>.</li>
+<li>A self-improving <a href="#world">world</a> <a href="#model">model</a>. In this equivalent view, the mind continuously gathers information about the <a href="#environment">environment</a> around the system and uses it to make better decisions.</li>
 </ol>
 <div>
 <a id='cognition'/>
 </div>
-<h3
-id="def-cognition"><a href='#cognition' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Cognition</h3>
+<h3 id="def-cognition"><a href='#cognition' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Cognition</h3>
 <p>The properties of a <a href="#mind">mind</a>.</p>
 <div>
 <a id='concept'/>
 </div>
-<h3
-id="def-concept"><a href='#concept' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Concept</h3>
-<p>A binary state within a <a href="#mind">mind</a>. A concept is
-generally considered to be turned on or off by the activity of the mind,
-including other concepts.</p>
+<h3 id="def-concept"><a href='#concept' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Concept</h3>
+<p>A binary state within a <a href="#mind">mind</a>. A concept is generally considered to be turned on or off by the activity of the mind, including other concepts.</p>
 <div>
 <a id='abstract'/>
 </div>
-<h3
-id="def-abstract"><a href='#abstract' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Abstract</h3>
-<p>A <a href="#concept">concept</a> is said more abstract than another
-when its full definition from elementary concepts is more complex.</p>
+<h3 id="def-abstract"><a href='#abstract' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Abstract</h3>
+<p>A <a href="#concept">concept</a> is said more abstract than another when its full definition from elementary concepts is more complex.</p>
 <div>
 <a id='concrete'/>
 </div>
-<h3
-id="def-concrete"><a href='#concrete' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Concrete</h3>
-<p>The opposite of <a href="#abstract">abstract</a>. A <a
-href="#concept">concept</a> is more concrete than another when it is
-less abstract. In a <a href="#mind">mind</a>, the most concrete concepts
-are the <a href="#state">states</a> of <a
-href="#sensing">sensors</a>.</p>
+<h3 id="def-concrete"><a href='#concrete' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Concrete</h3>
+<p>The opposite of <a href="#abstract">abstract</a>. A <a href="#concept">concept</a> is more concrete than another when it is less abstract. In a <a href="#mind">mind</a>, the most concrete concepts are the <a href="#state">states</a> of <a href="#sensing">sensors</a>.</p>
 <div>
 <a id='intuition'/>
 </div>
-<h3
-id="def-intuition"><a href='#intuition' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Intuition</h3>
-<p>The activation of <a href="#abstract">abstract</a> <a
-href="#concept">concepts</a> or ideas within a <a
-href="#mind">mind</a>.</p>
+<h3 id="def-intuition"><a href='#intuition' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Intuition</h3>
+<p>The activation of <a href="#abstract">abstract</a> <a href="#concept">concepts</a> or ideas within a <a href="#mind">mind</a>.</p>
 <div>
 <a id='perception'/>
 </div>
-<h3
-id="def-perception"><a href='#perception' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Perception</h3>
-<p>A form of <a href="#intuition">intuition</a> involving <a
-href="#concept">concepts</a> that form a <a href="#model">model</a> of
-the <a href="#world">world</a> as it is being <a
-href="#sensing">sensed</a>.</p>
+<h3 id="def-perception"><a href='#perception' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Perception</h3>
+<p>A form of <a href="#intuition">intuition</a> involving <a href="#concept">concepts</a> that form a <a href="#model">model</a> of the <a href="#world">world</a> as it is being <a href="#sensing">sensed</a>.</p>
 <div>
 <a id='reaction'/>
 </div>
-<h3
-id="def-reaction"><a href='#reaction' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Reaction</h3>
-<p>An <a href="#action">action</a> that is triggered within a <a
-href="#mind">mind</a> by the presence of a particular <a
-href="#concept">concept</a>.</p>
+<h3 id="def-reaction"><a href='#reaction' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Reaction</h3>
+<p>An <a href="#action">action</a> that is triggered within a <a href="#mind">mind</a> by the presence of a particular <a href="#concept">concept</a>.</p>
 <div>
 <a id='optimization'/>
 </div>
-<h3
-id="def-optimization"><a href='#optimization' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Optimization</h3>
-<p>An activity consisting in modifying a <a href="#system">system</a> so
-as to increase its fitness, which is a number, specifically an element
-taken from an ordered set. The goal function, objective function or
-fitness function is the function that maps a <a href="#state">state</a>
-of a system to the number referred to as fitness.</p>
+<h3 id="def-optimization"><a href='#optimization' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Optimization</h3>
+<p>An activity consisting in modifying a <a href="#system">system</a> so as to increase its fitness, which is a number, specifically an element taken from an ordered set. The goal function, objective function or fitness function is the function that maps a <a href="#state">state</a> of a system to the number referred to as fitness.</p>
 <div>
 <a id='feedback'/>
 </div>
-<h3
-id="def-feedback"><a href='#feedback' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Feedback</h3>
-<p>Input of the <a href="#optimization">fitness</a> function of a <a
-href="#system">system</a>.</p>
+<h3 id="def-feedback"><a href='#feedback' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Feedback</h3>
+<p>Input of the <a href="#optimization">fitness</a> function of a <a href="#system">system</a>.</p>
 <div>
 <a id='symbol'/>
 </div>
-<h3
-id="def-symbol"><a href='#symbol' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Symbol</h3>
-<p>A conventional representation of a <a href="#concept">concept</a>. It
-is a component of the <a href="#world">world</a> to which some members
-of a <a href="#society">society</a> will <a href="#reaction">react</a>
-in a similar manner and that does not provide <a
-href="#optimization">benefits</a> other than eliciting similar reactions
-in others. A special case of a symbol is one that’s used only by a
-single <a href="#individual">individual</a>. It suffices that the
-concept be identified as such by the individual to be considered a
-symbol. For example, “that feeling when I do X” shall be considered an
-internal symbol because it’s a concept whose presence is clearly
-identified by the subject. The subject might then try to reproduce it
-with the aim of eliciting a particular <a href="#reaction">reaction</a>
-in their own <a href="#mind">mind</a>.</p>
+<h3 id="def-symbol"><a href='#symbol' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Symbol</h3>
+<p>A conventional representation of a <a href="#concept">concept</a>. It is a component of the <a href="#world">world</a> to which some members of a <a href="#society">society</a> will <a href="#reaction">react</a> in a similar manner and that does not provide <a href="#optimization">benefits</a> other than eliciting similar reactions in others. A special case of a symbol is one that’s used only by a single <a href="#individual">individual</a>. It suffices that the concept be identified as such by the individual to be considered a symbol. For example, “that feeling when I do X” shall be considered an internal symbol because it’s a concept whose presence is clearly identified by the subject. The subject might then try to reproduce it with the aim of eliciting a particular <a href="#reaction">reaction</a> in their own <a href="#mind">mind</a>.</p>
 <div>
 <a id='reasoning'/>
 </div>
-<h3
-id="def-reasoning"><a href='#reasoning' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Reasoning</h3>
-<p>Any <a href="#mind">mental</a> activity that makes heavy use of <a
-href="#symbol">symbols</a>.</p>
+<h3 id="def-reasoning"><a href='#reasoning' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Reasoning</h3>
+<p>Any <a href="#mind">mental</a> activity that makes heavy use of <a href="#symbol">symbols</a>.</p>
 <div>
 <a id='sentence'/>
 </div>
-<h3
-id="def-sentence"><a href='#sentence' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Sentence</h3>
-<p>A sentence is a compound <a href="#symbol">symbol</a> i.e. a symbol
-formed by combining multiple symbols into one.</p>
+<h3 id="def-sentence"><a href='#sentence' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Sentence</h3>
+<p>A sentence is a compound <a href="#symbol">symbol</a> i.e. a symbol formed by combining multiple symbols into one.</p>
 <div>
 <a id='language'/>
 </div>
-<h3
-id="def-language"><a href='#language' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Language</h3>
-<p>A collection of <a href="#symbol">symbols</a> produced by combining
-other symbols. A combination of symbols that itself forms a symbol is
-referred to as a <a href="#sentence">compound symbol</a> or a <a
-href="#sentence">sentence</a>. One shall distinguish formal languages
-from informal languages.</p>
+<h3 id="def-language"><a href='#language' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Language</h3>
+<p>A collection of <a href="#symbol">symbols</a> produced by combining other symbols. A combination of symbols that itself forms a symbol is referred to as a <a href="#sentence">compound symbol</a> or a <a href="#sentence">sentence</a>. One shall distinguish formal languages from informal languages.</p>
 <div>
 <a id='informal-language'/>
 </div>
-<h3
-id="def-informal-language"><a href='#informal-language' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Informal Language</h3>
-<p>An informal language is a <a href="#language">language</a> made of
-ambiguous <a href="#symbol">symbols</a>. A simple symbol or a <a
-href="#sentence">compound symbol</a> is ambiguous if it elicits
-different <a href="#reaction">reactions</a> in different people. For
-example, a simple English sentence like “the sky is blue” is ambiguous
-at least because different people have different notions of the color
-blue or whether this claim asserts that the sky is always blue. The
-missing details are usually called “context” but for an informal
-language, it is not possible to provide all the context for a <a
-href="#sentence">sentence</a> to become unambiguous. What prevents this
-is how each <a href="#mind">mind</a> produces <a
-href="#concept">concepts</a> and reacts to them as a function of its own
-state rather than just as a function of new external data.</p>
+<h3 id="def-informal-language"><a href='#informal-language' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Informal Language</h3>
+<p>An informal language is a <a href="#language">language</a> made of ambiguous <a href="#symbol">symbols</a>. A simple symbol or a <a href="#sentence">compound symbol</a> is ambiguous if it elicits different <a href="#reaction">reactions</a> in different people. For example, a simple English sentence like “the sky is blue” is ambiguous at least because different people have different notions of the color blue or whether this claim asserts that the sky is always blue. The missing details are usually called “context” but for an informal language, it is not possible to provide all the context for a <a href="#sentence">sentence</a> to become unambiguous. What prevents this is how each <a href="#mind">mind</a> produces <a href="#concept">concepts</a> and reacts to them as a function of its own state rather than just as a function of new external data.</p>
 <div>
 <a id='formal-language'/>
 </div>
-<h3
-id="def-formal-language"><a href='#formal-language' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Formal Language</h3>
-<p>A formal language is a <a href="#language">language</a> defined
-mathematically, or equivalently unambiguously. Most programming
-languages can be thought of as formal languages, even if in practice
-certain aspects of the language are left undefined. Another example of
-“almost formal” languages are mathematical proofs. While ordinary
-mathematical proofs are expressed in a natural language such as English,
-they are believed to be translatable into one or more equivalent
-proof-checking <a href="#algorithm">algorithms</a> by different people.
-Since not everyone understands a given mathematical proof, the key is to
-convince the audience that they understand the proof only if they really
-do. As a shortcut, we might therefore allow ourselves to treat most
-mathematical discourse as using a formal language. This contrasts with
-everyday <a href="#informal-language">informal languages</a>, which are
-not believed nor designed to be unambiguous.</p>
+<h3 id="def-formal-language"><a href='#formal-language' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Formal Language</h3>
+<p>A formal language is a <a href="#language">language</a> defined mathematically, or equivalently unambiguously. Most programming languages can be thought of as formal languages, even if in practice certain aspects of the language are left undefined. Another example of “almost formal” languages are mathematical proofs. While ordinary mathematical proofs are expressed in a natural language such as English, they are believed to be translatable into one or more equivalent proof-checking <a href="#algorithm">algorithms</a> by different people. Since not everyone understands a given mathematical proof, the key is to convince the audience that they understand the proof only if they really do. As a shortcut, we might therefore allow ourselves to treat most mathematical discourse as using a formal language. This contrasts with everyday <a href="#informal-language">informal languages</a>, which are not believed nor designed to be unambiguous.</p>
 <div>
 <a id='imagination'/>
 </div>
-<h3
-id="def-imagination"><a href='#imagination' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Imagination</h3>
-<p>A form of <a href="#intuition">intuition</a>, generally involving <a
-href="#concept">concepts</a> for which <a href="#symbol">symbols</a>
-already exist.</p>
+<h3 id="def-imagination"><a href='#imagination' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Imagination</h3>
+<p>A form of <a href="#intuition">intuition</a>, generally involving <a href="#concept">concepts</a> for which <a href="#symbol">symbols</a> already exist.</p>
 <div>
 <a id='implicit-model'/>
 </div>
-<h3
-id="def-implicit-model"><a href='#implicit-model' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Implicit Model</h3>
-<p>A <a href="#model">model</a> implemented by a <a
-href="#mind">mind</a>. A mind makes <a href="#decision">decisions</a> at
-least partially by relying on some internal structure in the <a
-href="#system">system</a>, without relying on a <a
-href="#symbol">symbolism</a> or language that makes it transferable to
-other <a href="#individual">individuals</a>. This internal structure is
-considered an implicit world model.</p>
+<h3 id="def-implicit-model"><a href='#implicit-model' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Implicit Model</h3>
+<p>A <a href="#model">model</a> implemented by a <a href="#mind">mind</a>. A mind makes <a href="#decision">decisions</a> at least partially by relying on some internal structure in the <a href="#system">system</a>, without relying on a <a href="#symbol">symbolism</a> or language that makes it transferable to other <a href="#individual">individuals</a>. This internal structure is considered an implicit world model.</p>
 <div>
 <a id='explicit-model'/>
 </div>
-<h3
-id="def-explicit-model"><a href='#explicit-model' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Explicit Model</h3>
-<p>A <a href="#model">model</a> transferable by a <a
-href="#system">system</a> to another system using <a
-href="#symbol">symbols</a> forming a language.</p>
+<h3 id="def-explicit-model"><a href='#explicit-model' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Explicit Model</h3>
+<p>A <a href="#model">model</a> transferable by a <a href="#system">system</a> to another system using <a href="#symbol">symbols</a> forming a language.</p>
 <div>
 <a id='understanding'/>
 </div>
-<h3
-id="def-understanding"><a href='#understanding' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Understanding</h3>
+<h3 id="def-understanding"><a href='#understanding' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Understanding</h3>
 <ol type="1">
-<li>Some measure of how much a <a href="#mind">mind</a> reproduces <a
-href="#implicit-model">implicitly</a> the essential features of some
-external <a href="#model">model</a>. It can be tested by placing the
-mind in an <a href="#environment">environment</a> that requires quick <a
-href="#decision">decisions</a> that benefit from identifying features of
-the model without much <a href="#computation">computation</a>.</li>
-<li>The properties of a mind that allow it to extend its implicit <a
-href="#world">world</a> model.</li>
+<li>Some measure of how much a <a href="#mind">mind</a> reproduces <a href="#implicit-model">implicitly</a> the essential features of some external <a href="#model">model</a>. It can be tested by placing the mind in an <a href="#environment">environment</a> that requires quick <a href="#decision">decisions</a> that benefit from identifying features of the model without much <a href="#computation">computation</a>.</li>
+<li>The properties of a mind that allow it to extend its implicit <a href="#world">world</a> model.</li>
 </ol>
 <div>
 <a id='communication'/>
 </div>
-<h3
-id="def-communication"><a href='#communication' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Communication</h3>
-<p>Transfer of <a href="#concept">concepts</a> from an <a
-href="#individual">individual</a> to other individuals. A concept is the
-activation of a construct within a particular <a href="#mind">mind</a>.
-In general and ideally, two individuals with similar experience and
-exposed to the same input will activate approximately equivalent
-concepts. For example, when seeing an apple, some kind of neuron may
-light up, corresponding to the approximately defined concept of “an
-apple being present in front of them”. We distinguish concepts, which
-are internal to each mind, from <a href="#symbol">symbols</a> which are
-placeholders meant to activate, trigger, or elicit a particular concept.
-Communication may or may not rely on symbols. <a
-href="#language">Language</a> relies on symbols to represent concepts.
-An example of communication without symbols is teaching by example, such
-as an animal showing their offspring how to catch prey by just doing
-it.</p>
+<h3 id="def-communication"><a href='#communication' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Communication</h3>
+<p>Transfer of <a href="#concept">concepts</a> from an <a href="#individual">individual</a> to other individuals. A concept is the activation of a construct within a particular <a href="#mind">mind</a>. In general and ideally, two individuals with similar experience and exposed to the same input will activate approximately equivalent concepts. For example, when seeing an apple, some kind of neuron may light up, corresponding to the approximately defined concept of “an apple being present in front of them”. We distinguish concepts, which are internal to each mind, from <a href="#symbol">symbols</a> which are placeholders meant to activate, trigger, or elicit a particular concept. Communication may or may not rely on symbols. <a href="#language">Language</a> relies on symbols to represent concepts. An example of communication without symbols is teaching by example, such as an animal showing their offspring how to catch prey by just doing it.</p>
 <div>
 <a id='taboo'/>
 </div>
-<h3
-id="def-taboo"><a href='#taboo' style='font-weight:normal; color: grey'>#</a>
-<span class="def-prefix">def</span> Taboo</h3>
-<p>A <a href="#concept">concept</a> that is being avoided by one or more
-<a href="#individual">individuals</a>. Keeping in mind that a concept is
-the activation of a particular state of the <a href="#mind">mind</a>,
-avoiding a concept is a complex process. It takes the mind some training
-that consists in identifying situations that may lead to the concept,
-and favoring <a href="#decision">decisions</a> that take the focus away
-from the taboo concept. It is important to distinguish a taboo from any
-undesirable situation. A taboo concept is not just about avoiding a
-specific situation but also avoiding thinking about it. For example, the
-concept “a tiger is attacking me” for most people is not taboo because
-we don’t have a problem imagining this. The actual concept that we want
-to avoid is “the tiger is attacking me right now for real”. A taboo is a
-concept that is completely avoided, possibly due to threats <a
-href="#communication">communicated</a> by others or more generally due
-to fear caused by <a href="#feedback">negative</a> past experience
-involving co-occurring concepts.</p>
+<h3 id="def-taboo"><a href='#taboo' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> Taboo</h3>
+<p>A <a href="#concept">concept</a> that is being avoided by one or more <a href="#individual">individuals</a>. Keeping in mind that a concept is the activation of a particular state of the <a href="#mind">mind</a>, avoiding a concept is a complex process. It takes the mind some training that consists in identifying situations that may lead to the concept, and favoring <a href="#decision">decisions</a> that take the focus away from the taboo concept. It is important to distinguish a taboo from any undesirable situation. A taboo concept is not just about avoiding a specific situation but also avoiding thinking about it. For example, the concept “a tiger is attacking me” for most people is not taboo because we don’t have a problem imagining this. The actual concept that we want to avoid is “the tiger is attacking me right now for real”. A taboo is a concept that is completely avoided, possibly due to threats <a href="#communication">communicated</a> by others or more generally due to fear caused by <a href="#feedback">negative</a> past experience involving co-occurring concepts.</p>
 <div>
 <a id='introductions'/>
 </div>

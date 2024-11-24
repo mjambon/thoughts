@@ -17,6 +17,10 @@ a, a:visited {
   color: var(--text-color);
 }
 
+a:hover {
+  color: var(--light-text-color);
+}
+
 .toc-chapter {
   color: var(--text-color);
   font-size: 1.1em;
@@ -24,11 +28,20 @@ a, a:visited {
   text-decoration: none;
 }
 
-.toc-article {
+.toc-chapter-body {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.toc-article, .toc-article-compact {
   color: var(--text-color);
   font-size: 1em;
   text-decoration: none;
   margin-left: 2em;
+}
+
+.toc-article-compact {
+  margin-left: 0px;
 }
 
 .def-prefix {

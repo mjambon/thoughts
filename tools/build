@@ -72,6 +72,7 @@ class Chapter:
     markdown_introduction: str
     article_title_prefix: str
     articles: List[Article]
+    compact_toc: bool
 
 
 # Check that the articles are in an order that respects the dependencies
@@ -347,10 +348,14 @@ def collect_articles(source_folder: Path, chapters: List[Chapter]) -> None:
 def export_html_table_of_contents(chapters: List[Chapter]) -> None:
     print(f"## Contents")
     for chapter in chapters:
-        print(f"<div><a href='#{chapter.id_}' class='toc-chapter'>{chapter.title}</a></div>\n")
+        print(f"<div><a href='#{chapter.id_}' class='toc-chapter'>{chapter.title}</a></div>")
+        print("<div class='toc-chapter-body'>")
         for article in chapter.articles:
-            print(f"<div><a href='#{article.main_id}' class='toc-article'>{article.title}</a></div>\n")
-
+            if chapter.compact_toc:
+                print(f"<a href='#{article.main_id}' class='toc-article-compact'>{article.title}</a>")
+            else:
+                print(f"<div><a href='#{article.main_id}' class='toc-article'>{article.title}</a></div>")
+        print("</div>")
 
 def export_to_markdown_page(chapters: List[Chapter]) -> None:
     export_html_table_of_contents(chapters)
@@ -370,9 +375,14 @@ def export_to_markdown_page(chapters: List[Chapter]) -> None:
 DEFINITIONS = Chapter(
     id_="definitions",
     title="Definitions",
-    markdown_introduction="",
+    markdown_introduction="""
+This a collection of definitions that are important to us. They're
+listed such that no term is referenced before its definition. This guarantees
+no circular definitions.
+""",
     article_title_prefix="<span class='def-prefix'>def</span> ",
-    articles=[]
+    articles=[],
+    compact_toc=True,
 )
 
 INTRODUCTIONS = Chapter(
@@ -380,7 +390,8 @@ INTRODUCTIONS = Chapter(
     title="Introductions",
     markdown_introduction="",
     article_title_prefix="",
-    articles=[]
+    articles=[],
+    compact_toc=False,
 )
 
 CASE_STUDIES = Chapter(
@@ -388,7 +399,8 @@ CASE_STUDIES = Chapter(
     title="Case Studies",
     markdown_introduction="",
     article_title_prefix="",
-    articles=[]
+    articles=[],
+    compact_toc=False,
 )
 
 EXTENSIONS = Chapter(
@@ -396,7 +408,8 @@ EXTENSIONS = Chapter(
     title="Extensions",
     markdown_introduction="",
     article_title_prefix="",
-    articles=[]
+    articles=[],
+    compact_toc=False,
 )
 
 CHAPTERS: List[Chapter] = [
