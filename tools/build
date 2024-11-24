@@ -360,7 +360,7 @@ def export_html_table_of_contents(chapters: List[Chapter]) -> None:
 def export_to_markdown_page(chapters: List[Chapter]) -> None:
     export_html_table_of_contents(chapters)
     for chapter in chapters:
-        print(f"<div><a id='{chapter.id_}'/></div>\n")
+        print(f"<div><a id='{chapter.id_}'></a></div>\n")
         print(f"## {chapter.title}\n")
         if chapter.markdown_introduction:
             print(f"{chapter.markdown_introduction}\n")
