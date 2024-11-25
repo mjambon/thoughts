@@ -58,6 +58,9 @@ class Article:
     # alternative unique IDs including main_id and lowercased title
     ids: Set[str] = field(default_factory=lambda: set())
 
+    # drafts are not published
+    draft: bool = False
+
     # article body
     markdown_lines: List[str] = field(default_factory=lambda: [])
 
@@ -226,6 +229,7 @@ def parse_article(main_id: str, lines: List[str]) -> Article:
     stream = iter(lines)
     title = None
     ids = set()
+    draft = False
     body = []
     # Parse head section
     try:
@@ -241,6 +245,8 @@ def parse_article(main_id: str, lines: List[str]) -> Article:
                 elif key == 'synonyms':
                     synonyms = [x.strip() for x in value.split(',')]
                     ids.update(synonyms)
+                elif key == 'draft' and value == 'true':
+                    draft = True
                 else:
                     raise Exception(f"{main_id}: unsupported field: {key}")
             else:
@@ -262,6 +268,7 @@ def parse_article(main_id: str, lines: List[str]) -> Article:
     return Article(main_id=main_id,
                    title=title,
                    ids=ids,
+                   draft=draft,
                    # body needs further processing
                    markdown_lines=body)
 
@@ -350,12 +357,19 @@ def export_html_table_of_contents(chapters: List[Chapter]) -> None:
     for chapter in chapters:
         print(f"<div><a href='#{chapter.id_}' class='toc-chapter'>{chapter.title}</a></div>")
         print("<div class='toc-chapter-body'>")
+        article_titles: List[str] = []
         for article in chapter.articles:
-            if chapter.compact_toc:
-                print(f"<a href='#{article.main_id}' class='toc-article-compact'>{article.title}</a>")
-            else:
-                print(f"<div><a href='#{article.main_id}' class='toc-article'>{article.title}</a></div>")
+            if not article.draft:
+                if chapter.compact_toc:
+                    article_titles.append(f"<a href='#{article.main_id}' class='toc-article-compact'>{article.title}</a>")
+                else:
+                    article_titles.append(f"<div><a href='#{article.main_id}' class='toc-article'>{article.title}</a></div>")
+        if chapter.compact_toc:
+            print(",\n".join(article_titles))
+        else:
+            print("\n".join(article_titles))
         print("</div>")
+
 
 def export_to_markdown_page(chapters: List[Chapter]) -> None:
     export_html_table_of_contents(chapters)
@@ -365,11 +379,12 @@ def export_to_markdown_page(chapters: List[Chapter]) -> None:
         if chapter.markdown_introduction:
             print(f"{chapter.markdown_introduction}\n")
         for article in chapter.articles:
-            print(f"<div><a id='{article.main_id}'/></div>\n")
-            print(f"### <a href='#{article.main_id}'"
-                  f" style='font-weight:normal; color: grey'>#</a> "
-                  f"{chapter.article_title_prefix}{article.title}\n")
-            print(f"{''.join(article.markdown_lines)}\n")
+            if not article.draft:
+                print(f"<div><a id='{article.main_id}'/></div>\n")
+                print(f"### <a href='#{article.main_id}'"
+                      f" style='font-weight:normal; color: grey'>#</a> "
+                      f"{chapter.article_title_prefix}{article.title}\n")
+                print(f"{''.join(article.markdown_lines)}\n")
 
 
 DEFINITIONS = Chapter(
@@ -385,27 +400,9 @@ no circular definitions.
     compact_toc=True,
 )
 
-INTRODUCTIONS = Chapter(
-    id_="introductions",
-    title="Introductions",
-    markdown_introduction="",
-    article_title_prefix="",
-    articles=[],
-    compact_toc=False,
-)
-
-CASE_STUDIES = Chapter(
-    id_="case-studies",
-    title="Case Studies",
-    markdown_introduction="",
-    article_title_prefix="",
-    articles=[],
-    compact_toc=False,
-)
-
-EXTENSIONS = Chapter(
-    id_="extensions",
-    title="Extensions",
+COMMENTARY = Chapter(
+    id_="commentary",
+    title="Commentary",
     markdown_introduction="",
     article_title_prefix="",
     articles=[],
@@ -413,7 +410,7 @@ EXTENSIONS = Chapter(
 )
 
 CHAPTERS: List[Chapter] = [
-    DEFINITIONS, INTRODUCTIONS, CASE_STUDIES, EXTENSIONS
+    DEFINITIONS, COMMENTARY
 ]
 
 

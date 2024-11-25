@@ -29,7 +29,7 @@ Format:
 -->
 
 *** world
-title: World
+title: world
 synonyms: worlds
 
 A subject of study plus everything that interacts with it
@@ -42,7 +42,7 @@ the world cannot learn anything about the existence or the nature of
 other worlds.
 
 *** mathematics
-title: Mathematics
+title: mathematics
 synonyms: math, maths, mathematical
 
 The study of unambiguous statements, or equivalently, the study of
@@ -67,7 +67,7 @@ understanding of these notions is considered a prerequisite in the
 rest of this book.
 
 *** model
-title: Model
+title: model
 synonyms: models, modeled, representation, represented
 
 An unambiguous representation of the [world]. As such, a model
@@ -90,7 +90,7 @@ whatever explicit models a thinker or scientist can construct and
 publish.
 
 *** time
-title: Time
+title: time
 synonyms: successive, step
 
 An ordering over the states of a [model]. Time is the breakdown of a
@@ -109,7 +109,7 @@ More generally however, when there is no need for computing successive
 states, time is usually modeled as the real line.
 
 *** system
-title: System
+title: system
 synonyms: systems
 
 A system refers to a partial [model]. It can be obtained by
@@ -123,7 +123,7 @@ world such as buildings and trees. In this example, the car is the
 system and the road is the rest of the world.
 
 *** environment
-title: Environment
+title: environment
 synonyms: environments
 
 In a [model] comprising [systems], the environment refers to
@@ -131,7 +131,7 @@ everything in the model that's not part of the system under
 consideration.
 
 *** sensing
-title: Sensing
+title: sensing
 synonyms: sensed, sensor, sensors
 
 The acquisition of raw data by a [system] from the [environment].
@@ -139,7 +139,7 @@ This is usually done by special-purpose parts of the system, which
 are called sensors.
 
 *** parameter
-title: Parameter
+title: parameter
 synonyms: parameters
 
 A parameter of a [model] is any property of this model that is left
@@ -147,13 +147,13 @@ unspecified, defining a function in the usual [mathematical] sense.
 In general, a model can have any number of parameters.
 
 *** state
-title: State
+title: state
 synonyms: states
 
 A particular instantiation of the [parameters] of a [model].
 
 *** mutable
-title: Mutable
+title: mutable
 synonyms: mutability
 
 An entity is said mutable when it consists of [time]-indexed
@@ -161,7 +161,7 @@ sequence of [states]. Such sequence of states is meant to represent
 successive transformation of an initial object within a model.
 
 *** individual
-title: Individual
+title: individual
 synonyms: individuals
 
 In a [model] of the [world], an individual is a [mutable]
@@ -171,26 +171,26 @@ individuals. Each individual exists for some continuous period of
 either exists or doesn't exist.
 
 *** artificial
-title: Artificial
+title: artificial
 
 The property of being created by [individuals], as
 opposed to being imposed by the [model] of the [world] in which the
 individuals exist.
 
 *** identity
-title: Identity
+title: identity
 synonyms: identities
 
 The collection of properties associated with an [individual].
 
 *** set
-title: Set
+title: set
 synonyms: sets
 
 A set as defined in [mathematics] by the axioms of set theory.
 
 *** rule
-title: Rule
+title: rule
 synonyms: rules
 
 An [artificial] constraint. Unlike a physical constraint which can
@@ -199,14 +199,14 @@ applies to [individual] members of a society, and said members can
 decide whether to follow it.
 
 *** society
-title: Society
+title: society
 synonyms: societies
 
 A [set] of [individuals] known as society members within
 a [model] of the [world], and associated with [rules].
 
 *** nature
-title: Nature
+title: nature
 synonyms: natural
 
 A model of the world without a [society].
@@ -214,7 +214,7 @@ A model of the world without a [society].
     - natural
 
 *** tool
-title: Tool
+title: tool
 synonyms: tools, machine, machines, method, methods
 
 A tool, in the very general sense that interests us, is an extension
@@ -228,37 +228,37 @@ and other recordings. Therefore, other individuals can also be
 considered as tools according this definition.
 
 *** activity
-title: Activity
+title: activity
 synonyms: activities
 
 Collection of events involving [individuals] using specific [tools] or
 methods.
 
 *** science
-title: Science
+title: science
 
 The [activity] consisting in creating and refining [models] of the
 [world].
 
 *** creation
-title: Creation
+title: creation
 synonyms: create, creating
 
 [Activity] whose impact on the [world] is noticed and becomes associated
 with a new concept, in some [model] of interest.
 
 *** engineering
-title: Engineering
+title: engineering
 
 The [activity] of [creating] [tools].
 
 *** art
-title: Art
+title: art
 
 The [activity] of [creating] anything that is not a [tool].
 
 *** computer
-title: Computer
+title: computer
 synonyms: computers
 
 A finite [system] that reads discrete instructions and carries them out
@@ -271,7 +271,7 @@ hypercomputers, which would allow solving problems that Turing
 machines cannot, such as the halting problem.
 
 *** logic
-title: Logic
+title: logic
 synonyms: logics
 
 The [mathematical] subfield of logic. It is focused on the
@@ -279,13 +279,13 @@ general properties of formal systems and characterizing what can
 and cannot be done with mathematics and [computers].
 
 *** computation
-title: Computation
+title: computation
 synonyms: computations, process, processes
 
 The [successive] [states] of a [computer].
 
 *** program
-title: Program
+title: program
 synonyms: programs
 
 A computer program in the usual sense. A program consists of a
@@ -300,13 +300,13 @@ and vice-versa, which is known as the Curry-Howard correspondence,
 and offers a link between [logic] and [computation].
 
 *** algorithm
-title: Algorithm
+title: algorithm
 synonyms: algorithms
 
 An algorithm is a [program] that terminates.
 
 *** action
-title: Action
+title: action
 synonyms: actions
 
 A change in two [successive] [states] of a [system] that determines
@@ -314,7 +314,7 @@ a change elsewhere in the [world] [model], possibly in the system
 itself.
 
 *** decision
-title: Decision
+title: decision
 synonyms: decisions
 
 An [action] of a [system] onto itself, in particular when
@@ -322,7 +322,7 @@ examining a small selection of possible actions that are mutually
 exclusive.
 
 *** mind
-title: Mind
+title: mind
 synonyms: minds, mental
 
 (1) The components of a [system] that make it more durable
@@ -336,13 +336,13 @@ continuously gathers information about the [environment] around the
 system and uses it to make better decisions.
 
 *** cognition
-title: Cognition
+title: cognition
 synonyms: cognitive
 
 The properties of a [mind].
 
 *** concept
-title: Concept
+title: concept
 synonyms: concepts
 
 A binary state within a [mind]. A concept is generally
@@ -350,38 +350,38 @@ considered to be turned on or off by the activity of the mind,
 including other concepts.
 
 *** abstract
-title: Abstract
+title: abstract
 
 A [concept] is said more abstract than another when its full
 definition from elementary concepts is more complex.
 
 *** concrete
-title: Concrete
+title: concrete
 
 The opposite of [abstract]. A [concept] is more concrete than
 another when it is less abstract. In a [mind], the most concrete
 concepts are the [states] of [sensors].
 
 *** intuition
-title: Intuition
+title: intuition
 
 The activation of [abstract] [concepts] or ideas within a [mind].
 
 *** perception
-title: Perception
+title: perception
 
 A form of [intuition] involving [concepts] that form a [model] of
 the [world] as it is being [sensed].
 
 *** reaction
-title: Reaction
+title: reaction
 synonyms: reactions, react, reacting
 
 An [action] that is triggered within a [mind] by the presence of
 a particular [concept].
 
 *** optimization
-title: Optimization
+title: optimization
 synonyms: optimum, maximum, minimum, optimize, optimizing, fitness, benefit, benefits
 
 An activity consisting in modifying a [system] so as to increase
@@ -392,13 +392,13 @@ number referred to as fitness.
 
 
 *** feedback
-title: Feedback
+title: feedback
 synonyms: positive, negative
 
 Input of the [fitness] function of a [system].
 
 *** symbol
-title: Symbol
+title: symbol
 synonyms: symbols, symbolism
 
 A conventional representation of a [concept]. It is a component
@@ -415,20 +415,20 @@ their own [mind].
 
 
 *** reasoning
-title: Reasoning
+title: reasoning
 synonyms: reason
 
 Any [mental] activity that makes heavy use of [symbols].
 
 *** sentence
-title: Sentence
+title: sentence
 synonyms: sentences, compound symbol, compound symbols
 
 A sentence is a compound [symbol] i.e. a symbol formed by combining
 multiple symbols into one.
 
 *** language
-title: Language
+title: language
 synonyms: languages
 
 A collection of [symbols] produced by combining other symbols.
@@ -437,7 +437,7 @@ as a [compound symbol] or a [sentence].
 One shall distinguish formal languages from informal languages.
 
 *** informal-language
-title: Informal Language
+title: informal language
 synonyms: informal languages
 
 An informal language is a [language] made of ambiguous [symbols]. A
@@ -453,7 +453,7 @@ language, it is not possible to provide all the context for a
 own state rather than just as a function of new external data.
 
 *** formal-language
-title: Formal Language
+title: formal language
 synonyms: formal languages
 
 A formal language is a [language] defined mathematically, or equivalently
@@ -472,13 +472,13 @@ with everyday [informal languages], which are not believed nor
 designed to be unambiguous.
 
 *** imagination
-title: Imagination
+title: imagination
 
 A form of [intuition], generally involving [concepts] for which
 [symbols] already exist.
 
 *** implicit-model
-title: Implicit Model
+title: implicit model
 synonyms: implicitly
 
 A [model] implemented by a [mind]. A mind makes [decisions]
@@ -488,14 +488,14 @@ or language that makes it transferable to other [individuals].
 This internal structure is considered an implicit world model.
 
 *** explicit-model
-title: Explicit Model
+title: explicit model
 synonyms: explicitly
 
 A [model] transferable by a [system] to another system using [symbols]
 forming a language.
 
 *** understanding
-title: Understanding
+title: understanding
 
 (1) Some measure of how much a [mind] reproduces
 [implicitly] the essential features of some external
@@ -506,7 +506,7 @@ features of the model without much [computation].
 [world] model.
 
 *** communication
-title: Communication
+title: communication
 synonyms: communicated
 
 Transfer of [concepts] from an [individual] to other individuals.
@@ -525,7 +525,7 @@ teaching by example, such as an animal showing their offspring how
 to catch prey by just doing it.
 
 *** taboo
-title: Taboo
+title: taboo
 
 A [concept] that is being avoided by one or more [individuals].
 Keeping in mind that a concept is the activation of a
