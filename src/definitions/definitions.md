@@ -622,11 +622,6 @@ applicability.
 *** causality
 title: causality
 synonyms: causation, cause, causes, effect, effects
+draft: true
 
-A property of a [model] characterized by the successful prediction of
-a [temporal data point] from another temporal data point.
-The input data point is
-called a cause while the prediction is called the effect.
-
-By extension, causality refers to several or all the pairs (cause,
-consequence) within the model.
+...
