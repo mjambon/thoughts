@@ -70,7 +70,9 @@ rest of this book.
 title: model
 synonyms: models, modeled, representation, represented
 
-An unambiguous representation of the [world]. As such, a model
+An unambiguous representation of the [world].
+
+As such, a model
 can in principle, given sufficient technology, be translated into
 another language and recovered back without loss. A model is
 necessarily simpler than the world in which it can be expressed. An
@@ -81,17 +83,33 @@ period. Elementary [mathematical] knowledge is sufficient to read and
 copy this model without mistakes. Our definition of a model includes
 any arrangement of information that is believed to form a world model
 but may not be accessed or copied in its entirety. For example, a
-human body, mostly in its brain, holds world model, some of which was
-learned by interacting with it since birth. While we may not have the
+human body, mostly in its brain, holds a world model, some of which was
+learned by interacting with the world since birth. While we may not have the
 technology to copy correctly and completely the relevant information
-from a human brain, we assume it's all in there. Such world model
+from a human brain, we assume it's all in there. Such a world model
 that's a necessary part of any human mind shall not be confused with
 whatever explicit models a thinker or scientist can construct and
 publish.
 
+Important remarks that will be developed later:
+
+* A model of the world in which we exist is necessarily imperfect.
+* In practice, models are usually parametrized by numbers or other
+  objects. Technically, changing a parameter produces a different
+  model. When the context is clear, we might refer to a parametrized
+  model simply as "a model" even though it is a collection of models.
+* A model supports simulations. A simulation is a computation that
+  discovers new facts about the model. It is meant to predict features
+  of the world it represents.
+* Some properties of a model can be verified or challenged by
+  observations and experiments i.e. interactions with the world
+  that produce data.
+* Scientific research is about creating and refining world models that
+  are compatible with observations.
+
 *** time
 title: time
-synonyms: successive, step
+synonyms: successive, step, timeline
 
 An ordering over the states of a [model]. Time is the breakdown of a
 model into a sequence of objects called states with constraints
@@ -162,7 +180,7 @@ successive transformation of an initial object within a model.
 
 *** individual
 title: individual
-synonyms: individuals
+synonyms: individuals, people
 
 In a [model] of the [world], an individual is a [mutable]
 [system] which interacts with the rest of world, including other
@@ -280,7 +298,7 @@ and cannot be done with mathematics and [computers].
 
 *** computation
 title: computation
-synonyms: computations, process, processes
+synonyms: computations
 
 The [successive] [states] of a [computer].
 
@@ -320,6 +338,16 @@ synonyms: decisions
 An [action] of a [system] onto itself, in particular when
 examining a small selection of possible actions that are mutually
 exclusive.
+
+*** process
+title: process
+synonyms: processes
+
+An [algorithm] that is usable directly by humans, typically with the
+aid of [tools], [machines], and [people] serving as such.
+
+This differs from the notion used in the context of operating
+systems where a process is an instance of a [program] being executed.
 
 *** mind
 title: mind
@@ -543,3 +571,62 @@ A taboo is a concept that is completely avoided, possibly due to
 threats [communicated] by others or more generally due to fear
 caused by [negative] past experience involving co-occurring
 concepts.
+
+*** data
+title: data
+
+Structured information that can be exchanged unambiguously. Data is
+said to be collected when it's the result of an intentional
+[process]. Otherwise, it is said to be created.
+
+*** event
+title: event
+synonyms: events
+
+A uniquely labeled item on a [timeline].
+
+*** temporal-data-point
+title: temporal data point
+synonyms: temporal data points, observation, observations
+
+An [event] associated with some [data] in addition to the event's
+identifier and [time].
+
+*** correlation
+title: correlation
+
+The correlation between two variables is a numerical measure of the
+tendency of one variable to predict the other.
+
+*** coincidence
+title: coincidence
+synonyms: coincidences
+
+The correct prediction of a [temporal data point] by chance.
+
+If a [model] predicts a value
+or a range of values for an [event] and it turns out to match the
+[temporal data point], it does not necessarily validate the model. If the
+model is shown to not predict other data points and is therefore
+invalid, an observation that is predicted by the model is said to be a
+coincidence.
+
+*** anecdote
+title: anecdote
+synonyms: anecdotes, anecdotal
+
+A [temporal data point] that is correctly predicted by a [model] but does not
+contribute much to the validation of the model over its domain of
+applicability.
+
+*** causality
+title: causality
+synonyms: causation, cause, causes, effect, effects
+
+A property of a [model] characterized by the successful prediction of
+an [temporal data point] from another temporal data point.
+The input data point is
+called a cause while the prediction is called the effect.
+
+By extension, causality refers to several or all the pairs (cause,
+consequence) within the model.

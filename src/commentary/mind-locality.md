@@ -1,3 +1,4 @@
+<!--
 # Template:
 #
 # Document type: {motivational, clarification, illustrative,
@@ -5,9 +6,10 @@
 # Prerequisites: [topics not covered in this book, links to other articles]
 # See also: [links to other articles]
 #
+-->
 
 *** mind-locality
-title: Where Is a Mind Located?
+title: Where Is My Mind?
 draft: true
 
 a common model: humans, other animals, and possibly robots, aliens,

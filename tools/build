@@ -9,6 +9,7 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 import argparse
 import re
 import os
+import sys
 
 #############################################################################
 # Book format
@@ -140,9 +141,10 @@ def parse_field(line: str) -> Optional[Tuple[str, str]]:
     else:
         return None
 
-
+# What's allowed in a short link is more restrictive than for full links.
+# Use full links if your link contains characters not allowed in short links.
 SHORT_LINK_RE = re.compile(r"""
-  \[([^\[\]\(\)]+)\]  # bracketed contents
+  \[ ([^\[\]\(\)0-9,;]+) \]  # bracketed contents
   (?!\()              # not followed by an opening parenthesis
 """, re.X)
 
@@ -245,8 +247,9 @@ def parse_article(main_id: str, lines: List[str]) -> Article:
                 elif key == 'synonyms':
                     synonyms = [x.strip() for x in value.split(',')]
                     ids.update(synonyms)
-                elif key == 'draft' and value == 'true':
-                    draft = True
+                elif key == 'draft':
+                    if value == 'true':
+                        draft = True
                 else:
                     raise Exception(f"{main_id}: unsupported field: {key}")
             else:
@@ -306,6 +309,7 @@ def split_source_file(filepath: Path) -> List[Article]:
                 articles.append(article)
         current_id = ""
         current_lines = []
+    print(f"split source file {filepath}", file=sys.stderr)
     with open(filepath) as file:
         for line in file:
             opt_id = match_id(line)
