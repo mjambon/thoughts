@@ -622,6 +622,7 @@ applicability.
 *** causality
 title: causality
 synonyms: causation, cause, causes, effect, effects
-draft: true
 
-...
+Causality is the reduction of a model to a small number of variables (causes)
+that are sufficient to predict a future state of another
+variable (effect) with acceptable accuracy.
