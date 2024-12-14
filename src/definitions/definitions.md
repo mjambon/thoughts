@@ -585,7 +585,7 @@ title: data point
 synonyms: datum
 
 The singular form of [data] more commonly used than "datum". It refers
-to a value that has a given type and is part of a set of other values
+to a value that has a given type and belongs to a set of other values
 of the same type.
 
 *** observation
