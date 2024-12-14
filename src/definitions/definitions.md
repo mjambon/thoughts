@@ -574,10 +574,25 @@ concepts.
 
 *** data
 title: data
+synonyms: data points
 
 Structured information that can be exchanged unambiguously. Data is
 said to be collected when it's the result of an intentional
 [process]. Otherwise, it is said to be created.
+
+*** data-point
+title: data point
+synonyms: datum
+
+The singular form of [data] more commonly used than "datum". It refers
+to a value that has a given type and is part of a set of other values
+of the same type.
+
+*** observation
+title: observation
+synonyms: observations
+
+A collected [data point].
 
 *** event
 title: event
@@ -587,9 +602,9 @@ A uniquely labeled item on a [timeline].
 
 *** temporal-data-point
 title: temporal data point
-synonyms: temporal data points, observation, observations
+synonyms: temporal data points
 
-An [event] associated with some [data] in addition to the event's
+An [event] associated with a [data point] in addition to the event's
 identifier and [time].
 
 *** correlation

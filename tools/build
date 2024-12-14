@@ -78,6 +78,8 @@ class Chapter:
     articles: List[Article]
     compact_toc: bool
 
+def log(msg: str) -> None:
+    print(msg, file=sys.stderr)
 
 # Check that the articles are in an order that respects the dependencies
 def check_dependencies(articles: List[Article], allow_cycles: bool = False) -> None:
@@ -105,13 +107,19 @@ def make_synonym_map(articles: List[Article]) -> Dict[str, str]:
              for id_ in article.ids }
 
 
-ID_RE = re.compile(r"""
+ID_LINE_RE = re.compile(r"""
   ^
   \*\*\*\**     # 3 or more stars
   \s*           # whitespace
-  ([a-z0-9-]+)  # ID (filename/URL); must contain only URL-safe characters
+  (.+?)         # ID (filename/URL) - validity is checked later
   \s*
   $
+""", re.X)
+
+ID_RE = re.compile(r"""
+   ^
+   [a-z0-9] (?: [a-z0-9-]* [a-z0-9])?
+   $
 """, re.X)
 
 FIELD_RE = re.compile(r"""
@@ -127,9 +135,12 @@ FIELD_RE = re.compile(r"""
 
 
 def match_id(line: str) -> Optional[str]:
-    match = ID_RE.match(line)
+    match = ID_LINE_RE.match(line)
     if match:
-        return match.group(1)
+        id_ = match.group(1)
+        if not ID_RE.match(id_):
+            raise Exception(f"Invalid article ID: {id_}")
+        return id_
     else:
         return None
 
@@ -166,7 +177,7 @@ def resolve_link(synonym_map: Dict[str, str], link: str) -> str:
     if key in synonym_map:
         return synonym_map[key]
     else:
-        raise Exception(f"invalid link: '{link}'")
+        raise Exception(f"Invalid link: '{link}'")
 
 
 def resolve_link_synonyms(synonym_map: Dict[str, str], line: str) -> str:
@@ -309,7 +320,7 @@ def split_source_file(filepath: Path) -> List[Article]:
                 articles.append(article)
         current_id = ""
         current_lines = []
-    print(f"split source file {filepath}", file=sys.stderr)
+    log(f"split source file {filepath}")
     with open(filepath) as file:
         for line in file:
             opt_id = match_id(line)
