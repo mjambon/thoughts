@@ -623,6 +623,21 @@ applicability.
 title: causality
 synonyms: causation, cause, causes, effect, effects
 
-Causality is the reduction of a model to a small number of variables (causes)
-that are sufficient to predict a future state of another
-variable (effect) with acceptable accuracy.
+Causality is a feature of some [models] that include a notion of [time].
+Such a model can be reduced to a small number of time-dependent
+variables (causes) that are sufficient to predict a future [state]
+of another variable (effect) with acceptable accuracy.
+
+In general, causality changes as a model is refined. Some
+variables that used to be the cause for an effect are no longer
+considered causes while new variables become causes. Changes in causality
+can occur without significant changes in the model's accuracy for
+predicting various variables, including those variables assigned to
+causes and effects.
+
+Causality is therefore not necessary for a [world] model to be
+predictive. Causality is also not robust to improvements of a model in
+which new variables are introduced and others are retired. In
+practice, it's more useful in engineering than in science where
+artificial systems are designed to maintain familiar cause-effect
+relations rather than causality being inferred from nature.
