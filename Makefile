@@ -10,3 +10,8 @@ build:
 	  --css css/main.css \
 	  _build/index.md -o docs/index.html
 	cp -rp css docs/
+
+.PHONY: push
+push:
+	git commit -a -m "Update"
+	git push origin main
