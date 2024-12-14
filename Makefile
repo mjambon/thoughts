@@ -11,6 +11,12 @@ build:
 	  _build/index.md -o docs/index.html
 	cp -rp css docs/
 
+LOCAL_URL = file:///home/martin/thoughts/docs/index.html
+
+.PHONY: live
+live:
+	xdg-open $(LOCAL_URL)
+
 .PHONY: push
 push:
 	git commit -a -m "Update"
