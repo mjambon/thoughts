@@ -485,11 +485,11 @@ own state rather than just as a function of new external data.
 title: formal language
 synonyms: formal languages
 
-A formal language is a [language] defined mathematically, or equivalently
+A [[formal language]] is a [language] defined mathematically, or equivalently
 unambiguously. Most programming languages can be thought of as formal
 languages, even if in practice certain aspects of the language are
 left undefined. Another example of "almost formal" languages are
-mathematical proofs. While ordinary mathematical proofs are expressed in
+mathematical [[proofs]]. While ordinary mathematical proofs are expressed in
 a natural language such as English, they are believed to be
 translatable into one or more equivalent proof-checking [algorithms]
 by different people. Since not everyone understands a
