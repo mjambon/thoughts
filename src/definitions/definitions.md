@@ -51,13 +51,13 @@ structure.
 What distinguishes a mathematical statement from an
 ordinary English sentence is that a mathematical statement is
 interpreted in the same way by all mathematicians at minimal effort
-and regardless of their beliefs about the world. A statement can only
-be proven from ground truths known as axioms, from other proven
-statements, and using a fixed set of symbols and rules that allow
+and regardless of their beliefs about the world. A [[statement]] can only
+be proven from ground truths known as [[axioms]], from other proven
+statements, and using a fixed set of [[symbols]] and [[rules]] that allow
 combining statements into new statements. A proven statement is known
-as a theorem. Proving a statement can be very hard. Some statements
+as a [[theorem]]. Proving a statement can be very hard. Some statements
 are easy to prove with a 20th-century computer and software while being
-tedious to prove by humans. Such proofs are generally referred to as
+tedious to prove by humans. Such [[proofs]] are generally referred to as
 computations. Other statements were proven by humans but could not yet
 proven by computers as of the beginning of the 21st century. Some
 statements cannot even be proven at all and are referred to as being
@@ -77,7 +77,8 @@ can in principle, given sufficient technology, be translated into
 another language and recovered back without loss. A model is
 necessarily simpler than the world in which it can be expressed. An
 example of a simple model is the representation of the sun and the
-earth as points in a 2-dimensional Euclidean space, with the sun being
+earth as [[points]] in a [[2-dimensional]] [[Euclidean space]],
+with the sun being
 immobile and the earth rotating in a circular orbit over a one-year
 period. Elementary [mathematical] knowledge is sufficient to read and
 copy this model without mistakes. Our definition of a model includes
@@ -111,8 +112,8 @@ Important remarks that will be developed later:
 title: time
 synonyms: successive, step, timeline
 
-An ordering over the states of a [model]. Time is the breakdown of a
-model into a sequence of objects called states with constraints
+An [[ordering]] over the states of a [model]. Time is the breakdown of a
+model into a [[sequence]] of objects called states with constraints
 over those states.
 A more specific definition of time is part of each model, if the
 model relies on such notion of time or successive states.
@@ -120,7 +121,7 @@ Unless otherwise specified, the stepwise execution of computer
 programs uses a discrete, nonnegative index t
 to reference the successive steps of a computation. An ideal
 scenario is a computation of discrete states starting from an
-initial state t = 0 and a transition function. The transition
+initial [[state]] t = 0 and a [[transition function]]. The transition
 function computes the next state from the previous one. Such
 computations are called simulations.
 More generally however, when there is no need for computing successive
@@ -131,7 +132,7 @@ title: system
 synonyms: systems
 
 A system refers to a partial [model]. It can be obtained by
-taking some elements of a [world] model and ignoring all
+taking some elements of a [world] model and by ignoring all
 interactions with the rest of the world, or by modeling the rest of
 the world in a simpler manner than in the original model. For
 example, modeling a car could consist in retaining a model of the
@@ -161,7 +162,7 @@ title: parameter
 synonyms: parameters
 
 A parameter of a [model] is any property of this model that is left
-unspecified, defining a function in the usual [mathematical] sense.
+unspecified, defining a [[function]] in the usual [mathematical] sense.
 In general, a model can have any number of parameters.
 
 *** state
@@ -205,7 +206,7 @@ The collection of properties associated with an [individual].
 title: set
 synonyms: sets
 
-A set as defined in [mathematics] by the axioms of set theory.
+A [[set]] as defined in [mathematics] by the [[axioms]] of [[set theory]].
 
 *** rule
 title: rule
@@ -228,8 +229,6 @@ title: nature
 synonyms: natural
 
 A model of the world without a [society].
-
-    - natural
 
 *** tool
 title: tool
@@ -255,7 +254,7 @@ methods.
 *** science
 title: science
 
-The [activity] consisting in creating and refining [models] of the
+The [activity] consisting of creating and refining [models] of the
 [world].
 
 *** creation
@@ -279,14 +278,14 @@ The [activity] of [creating] anything that is not a [tool].
 title: computer
 synonyms: computers
 
-A finite [system] that reads discrete instructions and carries them out
+A [[finite]] [system] that reads discrete instructions and carries them out
 predictably. A computer can be [represented] as a sequence of [states]
-comprising a [mutable], discrete storage space. Turing machines
+comprising a [mutable], discrete storage space. [[Turing machines]]
 are idealized representations of computers with unbounded storage
 or memory; they are used in theoretical studies for proving some
 properties of computers. This definition excludes
-hypercomputers, which would allow solving problems that Turing
-machines cannot, such as the halting problem.
+[[hypercomputers]], which would allow solving problems that Turing
+machines cannot, such as the [[halting problem]].
 
 *** logic
 title: logic
@@ -307,21 +306,21 @@ title: program
 synonyms: programs
 
 A computer program in the usual sense. A program consists of a
-finite collection of instructions that can be executed by a
+[[finite]] collection of instructions that can be executed by a
 computer or by a Turing machine. A program may or may not take
 external input. In theoretical studies, the input is often
 baked into the program or into the initial state of the computer's
-memory. A program may or not terminate. Determining whether a
+memory. A program may or not [[terminate]]. Determining whether a
 program terminates is not always possible, which is known as the
-halting problem. A program can be viewed as a mathematical proof
-and vice-versa, which is known as the Curry-Howard correspondence,
+[[halting problem]]. A program can be viewed as a mathematical [[proof]]
+and vice-versa, which is known as the [[Curry-Howard correspondence]],
 and offers a link between [logic] and [computation].
 
 *** algorithm
 title: algorithm
 synonyms: algorithms
 
-An algorithm is a [program] that terminates.
+An algorithm is a [program] that [[terminates]].
 
 *** action
 title: action
@@ -412,10 +411,10 @@ a particular [concept].
 title: optimization
 synonyms: optimum, maximum, minimum, optimize, optimizing, fitness, benefit, benefits
 
-An activity consisting in modifying a [system] so as to increase
+An activity consisting of modifying a [system] so as to increase
 its fitness, which is a number, specifically an element taken from
-an ordered set. The goal function, objective function or fitness
-function is the function that maps a [state] of a system to the
+an ordered set. The [[goal function]], [[objective function]] or
+[[fitness function]] is the [[function]] that maps a [state] of a system to the
 number referred to as fitness.
 
 
@@ -441,6 +440,8 @@ clearly identified by the subject. The subject might then try to
 reproduce it with the aim of eliciting a particular [reaction] in
 their own [mind].
 
+<!-- disambiguate: this is not a symbol in the mathematical sense
+     as used earlier in the context of automata. -->
 
 *** reasoning
 title: reasoning

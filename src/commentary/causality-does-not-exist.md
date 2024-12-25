@@ -80,4 +80,39 @@ correlation between someone's hairstyle and their age.
 
 ### Causality within a system
 
+<!--
+Example 1:
+
+High electricity consumption correlates with extreme weather (hot,
+cold). Additionally, we say that extreme weather causes high
+electricity consumption (for cooling or heating). This is an example
+from the Wikipedia article on correlation.
+
+Does it sound right?
+
+What if we find out electricity consumption correlates
+better with the 24-hour weather forecast than the actual weather? Is
+it still acceptable to say that the weather causes high electricity
+consumption or is the weather forecast the real cause?
+
+What if there's an earthquake disrupting power lines and making
+electricity unavailable while the weather is hot? Can we still say
+that the weather causes a surge in electricity usage even though it's
+not true this one time?
+
+Example 2:
+
+A computer user enters the command `print "hello"` which is supposed
+to print `hello` on the screen. Does entering the command cause the
+computer to print `hello`? Sure. It always does this
+perfectly... except if there's a power failure during the program's
+execution (damn earthquakes!) and the screen goes blank. When we say
+the command causes a certain output, we assume we're using perfect computer
+executing the program in an ideal environment where nothing can stop
+it. Such an ideal environment doesn't exist but we can approach it
+with many precautions.
+
+-->
+
+
 ### Extending a system breaks causality

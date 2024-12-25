@@ -37,6 +37,7 @@
 </div>
 <h2 id="definitions">Definitions</h2>
 <p>This a collection of definitions that are important to us. They’re listed such that no term is referenced before its definition. This guarantees no circular definitions.</p>
+<p>In this chapter and in the rest of this book, we use italicization on terms such as <em>integer</em> to indicate that they are standard mathematical terms. They have a strict definition that the reader can easily look up elsewhere if necessary. A term is usually italicized only the first time it occurs in a particular context.</p>
 <div>
 <a id='world'/>
 </div>
@@ -47,13 +48,13 @@
 </div>
 <h3 id="def-mathematics"><a href='#mathematics' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> mathematics</h3>
 <p>The study of unambiguous statements, or equivalently, the study of structure.</p>
-<p>What distinguishes a mathematical statement from an ordinary English sentence is that a mathematical statement is interpreted in the same way by all mathematicians at minimal effort and regardless of their beliefs about the world. A statement can only be proven from ground truths known as axioms, from other proven statements, and using a fixed set of symbols and rules that allow combining statements into new statements. A proven statement is known as a theorem. Proving a statement can be very hard. Some statements are easy to prove with a 20th-century computer and software while being tedious to prove by humans. Such proofs are generally referred to as computations. Other statements were proven by humans but could not yet proven by computers as of the beginning of the 21st century. Some statements cannot even be proven at all and are referred to as being undecidable. The relationship between proofs and computation, as well as their fundamental limitations are now well-understood. A basic understanding of these notions is considered a prerequisite in the rest of this book.</p>
+<p>What distinguishes a mathematical statement from an ordinary English sentence is that a mathematical statement is interpreted in the same way by all mathematicians at minimal effort and regardless of their beliefs about the world. A <em>statement</em> can only be proven from ground truths known as <em>axioms</em>, from other proven statements, and using a fixed set of <em>symbols</em> and <em>rules</em> that allow combining statements into new statements. A proven statement is known as a <em>theorem</em>. Proving a statement can be very hard. Some statements are easy to prove with a 20th-century computer and software while being tedious to prove by humans. Such <em>proofs</em> are generally referred to as computations. Other statements were proven by humans but could not yet proven by computers as of the beginning of the 21st century. Some statements cannot even be proven at all and are referred to as being undecidable. The relationship between proofs and computation, as well as their fundamental limitations are now well-understood. A basic understanding of these notions is considered a prerequisite in the rest of this book.</p>
 <div>
 <a id='model'/>
 </div>
 <h3 id="def-model"><a href='#model' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> model</h3>
 <p>An unambiguous representation of the <a href="#world">world</a>.</p>
-<p>As such, a model can in principle, given sufficient technology, be translated into another language and recovered back without loss. A model is necessarily simpler than the world in which it can be expressed. An example of a simple model is the representation of the sun and the earth as points in a 2-dimensional Euclidean space, with the sun being immobile and the earth rotating in a circular orbit over a one-year period. Elementary <a href="#mathematics">mathematical</a> knowledge is sufficient to read and copy this model without mistakes. Our definition of a model includes any arrangement of information that is believed to form a world model but may not be accessed or copied in its entirety. For example, a human body, mostly in its brain, holds a world model, some of which was learned by interacting with the world since birth. While we may not have the technology to copy correctly and completely the relevant information from a human brain, we assume it’s all in there. Such a world model that’s a necessary part of any human mind shall not be confused with whatever explicit models a thinker or scientist can construct and publish.</p>
+<p>As such, a model can in principle, given sufficient technology, be translated into another language and recovered back without loss. A model is necessarily simpler than the world in which it can be expressed. An example of a simple model is the representation of the sun and the earth as <em>points</em> in a <em>2-dimensional</em> <em>Euclidean space</em>, with the sun being immobile and the earth rotating in a circular orbit over a one-year period. Elementary <a href="#mathematics">mathematical</a> knowledge is sufficient to read and copy this model without mistakes. Our definition of a model includes any arrangement of information that is believed to form a world model but may not be accessed or copied in its entirety. For example, a human body, mostly in its brain, holds a world model, some of which was learned by interacting with the world since birth. While we may not have the technology to copy correctly and completely the relevant information from a human brain, we assume it’s all in there. Such a world model that’s a necessary part of any human mind shall not be confused with whatever explicit models a thinker or scientist can construct and publish.</p>
 <p>Important remarks that will be developed later:</p>
 <ul>
 <li>A model of the world in which we exist is necessarily imperfect.</li>
@@ -66,12 +67,12 @@
 <a id='time'/>
 </div>
 <h3 id="def-time"><a href='#time' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> time</h3>
-<p>An ordering over the states of a <a href="#model">model</a>. Time is the breakdown of a model into a sequence of objects called states with constraints over those states. A more specific definition of time is part of each model, if the model relies on such notion of time or successive states. Unless otherwise specified, the stepwise execution of computer programs uses a discrete, nonnegative index t to reference the successive steps of a computation. An ideal scenario is a computation of discrete states starting from an initial state t = 0 and a transition function. The transition function computes the next state from the previous one. Such computations are called simulations. More generally however, when there is no need for computing successive states, time is usually modeled as the real line.</p>
+<p>An <em>ordering</em> over the states of a <a href="#model">model</a>. Time is the breakdown of a model into a <em>sequence</em> of objects called states with constraints over those states. A more specific definition of time is part of each model, if the model relies on such notion of time or successive states. Unless otherwise specified, the stepwise execution of computer programs uses a discrete, nonnegative index t to reference the successive steps of a computation. An ideal scenario is a computation of discrete states starting from an initial <em>state</em> t = 0 and a <em>transition function</em>. The transition function computes the next state from the previous one. Such computations are called simulations. More generally however, when there is no need for computing successive states, time is usually modeled as the real line.</p>
 <div>
 <a id='system'/>
 </div>
 <h3 id="def-system"><a href='#system' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> system</h3>
-<p>A system refers to a partial <a href="#model">model</a>. It can be obtained by taking some elements of a <a href="#world">world</a> model and ignoring all interactions with the rest of the world, or by modeling the rest of the world in a simpler manner than in the original model. For example, modeling a car could consist in retaining a model of the car components as well as a model of a road and how the car interacts with the road, discarding all other elements of the world such as buildings and trees. In this example, the car is the system and the road is the rest of the world.</p>
+<p>A system refers to a partial <a href="#model">model</a>. It can be obtained by taking some elements of a <a href="#world">world</a> model and by ignoring all interactions with the rest of the world, or by modeling the rest of the world in a simpler manner than in the original model. For example, modeling a car could consist in retaining a model of the car components as well as a model of a road and how the car interacts with the road, discarding all other elements of the world such as buildings and trees. In this example, the car is the system and the road is the rest of the world.</p>
 <div>
 <a id='environment'/>
 </div>
@@ -86,7 +87,7 @@
 <a id='parameter'/>
 </div>
 <h3 id="def-parameter"><a href='#parameter' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> parameter</h3>
-<p>A parameter of a <a href="#model">model</a> is any property of this model that is left unspecified, defining a function in the usual <a href="#mathematics">mathematical</a> sense. In general, a model can have any number of parameters.</p>
+<p>A parameter of a <a href="#model">model</a> is any property of this model that is left unspecified, defining a <em>function</em> in the usual <a href="#mathematics">mathematical</a> sense. In general, a model can have any number of parameters.</p>
 <div>
 <a id='state'/>
 </div>
@@ -116,7 +117,7 @@
 <a id='set'/>
 </div>
 <h3 id="def-set"><a href='#set' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> set</h3>
-<p>A set as defined in <a href="#mathematics">mathematics</a> by the axioms of set theory.</p>
+<p>A <em>set</em> as defined in <a href="#mathematics">mathematics</a> by the <em>axioms</em> of <em>set theory</em>.</p>
 <div>
 <a id='rule'/>
 </div>
@@ -132,7 +133,6 @@
 </div>
 <h3 id="def-nature"><a href='#nature' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> nature</h3>
 <p>A model of the world without a <a href="#society">society</a>.</p>
-<pre><code>- natural</code></pre>
 <div>
 <a id='tool'/>
 </div>
@@ -147,7 +147,7 @@
 <a id='science'/>
 </div>
 <h3 id="def-science"><a href='#science' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> science</h3>
-<p>The <a href="#activity">activity</a> consisting in creating and refining <a href="#model">models</a> of the <a href="#world">world</a>.</p>
+<p>The <a href="#activity">activity</a> consisting of creating and refining <a href="#model">models</a> of the <a href="#world">world</a>.</p>
 <div>
 <a id='creation'/>
 </div>
@@ -167,7 +167,7 @@
 <a id='computer'/>
 </div>
 <h3 id="def-computer"><a href='#computer' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> computer</h3>
-<p>A finite <a href="#system">system</a> that reads discrete instructions and carries them out predictably. A computer can be <a href="#model">represented</a> as a sequence of <a href="#state">states</a> comprising a <a href="#mutable">mutable</a>, discrete storage space. Turing machines are idealized representations of computers with unbounded storage or memory; they are used in theoretical studies for proving some properties of computers. This definition excludes hypercomputers, which would allow solving problems that Turing machines cannot, such as the halting problem.</p>
+<p>A <em>finite</em> <a href="#system">system</a> that reads discrete instructions and carries them out predictably. A computer can be <a href="#model">represented</a> as a sequence of <a href="#state">states</a> comprising a <a href="#mutable">mutable</a>, discrete storage space. <em>Turing machines</em> are idealized representations of computers with unbounded storage or memory; they are used in theoretical studies for proving some properties of computers. This definition excludes <em>hypercomputers</em>, which would allow solving problems that Turing machines cannot, such as the <em>halting problem</em>.</p>
 <div>
 <a id='logic'/>
 </div>
@@ -182,12 +182,12 @@
 <a id='program'/>
 </div>
 <h3 id="def-program"><a href='#program' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> program</h3>
-<p>A computer program in the usual sense. A program consists of a finite collection of instructions that can be executed by a computer or by a Turing machine. A program may or may not take external input. In theoretical studies, the input is often baked into the program or into the initial state of the computer’s memory. A program may or not terminate. Determining whether a program terminates is not always possible, which is known as the halting problem. A program can be viewed as a mathematical proof and vice-versa, which is known as the Curry-Howard correspondence, and offers a link between <a href="#logic">logic</a> and <a href="#computation">computation</a>.</p>
+<p>A computer program in the usual sense. A program consists of a <em>finite</em> collection of instructions that can be executed by a computer or by a Turing machine. A program may or may not take external input. In theoretical studies, the input is often baked into the program or into the initial state of the computer’s memory. A program may or not <em>terminate</em>. Determining whether a program terminates is not always possible, which is known as the <em>halting problem</em>. A program can be viewed as a mathematical <em>proof</em> and vice-versa, which is known as the <em>Curry-Howard correspondence</em>, and offers a link between <a href="#logic">logic</a> and <a href="#computation">computation</a>.</p>
 <div>
 <a id='algorithm'/>
 </div>
 <h3 id="def-algorithm"><a href='#algorithm' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> algorithm</h3>
-<p>An algorithm is a <a href="#program">program</a> that terminates.</p>
+<p>An algorithm is a <a href="#program">program</a> that <em>terminates</em>.</p>
 <div>
 <a id='action'/>
 </div>
@@ -251,7 +251,7 @@
 <a id='optimization'/>
 </div>
 <h3 id="def-optimization"><a href='#optimization' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> optimization</h3>
-<p>An activity consisting in modifying a <a href="#system">system</a> so as to increase its fitness, which is a number, specifically an element taken from an ordered set. The goal function, objective function or fitness function is the function that maps a <a href="#state">state</a> of a system to the number referred to as fitness.</p>
+<p>An activity consisting of modifying a <a href="#system">system</a> so as to increase its fitness, which is a number, specifically an element taken from an ordered set. The <em>goal function</em>, <em>objective function</em> or <em>fitness function</em> is the <em>function</em> that maps a <a href="#state">state</a> of a system to the number referred to as fitness.</p>
 <div>
 <a id='feedback'/>
 </div>
@@ -262,6 +262,8 @@
 </div>
 <h3 id="def-symbol"><a href='#symbol' style='font-weight:normal; color: grey'>#</a> <span class="def-prefix">def</span> symbol</h3>
 <p>A conventional representation of a <a href="#concept">concept</a>. It is a component of the <a href="#world">world</a> to which some members of a <a href="#society">society</a> will <a href="#reaction">react</a> in a similar manner and that does not provide <a href="#optimization">benefits</a> other than eliciting similar reactions in others. A special case of a symbol is one that’s used only by a single <a href="#individual">individual</a>. It suffices that the concept be identified as such by the individual to be considered a symbol. For example, “that feeling when I do X” shall be considered an internal symbol because it’s a concept whose presence is clearly identified by the subject. The subject might then try to reproduce it with the aim of eliciting a particular <a href="#reaction">reaction</a> in their own <a href="#mind">mind</a>.</p>
+<!-- disambiguate: this is not a symbol in the mathematical sense
+     as used earlier in the context of automata. -->
 <div>
 <a id='reasoning'/>
 </div>

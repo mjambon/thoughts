@@ -154,22 +154,35 @@ def parse_field(line: str) -> Optional[Tuple[str, str]]:
 
 # What's allowed in a short link is more restrictive than for full links.
 # Use full links if your link contains characters not allowed in short links.
+#  [foo]
 SHORT_LINK_RE = re.compile(r"""
   \[ ([^\[\]\(\)0-9,;]+) \]  # bracketed contents
   (?!\()              # not followed by an opening parenthesis
 """, re.X)
 
-
+# [the foos](foo)
 LINK_RE = re.compile(r"""
   \[([^\[\]\(\)]+)\]  # [foo]
   \(([^\[\]\(\)]+)\)  # (bar)
 """, re.X)
 
+# Special highlighting for math terms and other terms that have a standard
+# unambiguous definition.
+# [[integer]]
+MATH_TERM_RE = re.compile(r"""
+  \[\[ ([^\[\]\(\),;]+) \]\]  # double-bracketed contents
+""", re.X)
 
 # [foo] -> [foo](foo)
 #
 def replace_short_links(line: str) -> str:
     return re.sub(SHORT_LINK_RE, r"[\1](\1)", line)
+
+
+# [[foo]] -> _foo_
+#
+def highlight_math_terms(line: str) -> str:
+    return re.sub(MATH_TERM_RE, r"_\1_", line)
 
 
 def resolve_link(synonym_map: Dict[str, str], link: str) -> str:
@@ -213,7 +226,8 @@ def parse_article_body(synonym_map: Dict[str, str],
     md_lines: List[str] = []
     dependencies: List[str] = []
     for line in lines:
-        md_line = replace_short_links(line)
+        md_line = highlight_math_terms(line)
+        md_line = replace_short_links(md_line)
         dependencies.extend(extract_links(md_line))
         md_line = resolve_link_synonyms(synonym_map, md_line)
         md_line = make_links_local(md_line)
@@ -409,6 +423,12 @@ DEFINITIONS = Chapter(
 This a collection of definitions that are important to us. They're
 listed such that no term is referenced before its definition. This guarantees
 no circular definitions.
+
+In this chapter and in the rest of this book, we use italicization on terms
+such as _integer_ to indicate that they are standard
+mathematical terms. They have a strict definition that the reader can
+easily look up elsewhere if necessary. A term is usually italicized only the
+first time it occurs in a particular context.
 """,
     article_title_prefix="<span class='def-prefix'>def</span> ",
     articles=[],
